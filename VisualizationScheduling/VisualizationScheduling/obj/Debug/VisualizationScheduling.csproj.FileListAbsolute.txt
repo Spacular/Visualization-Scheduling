@@ -1,0 +1,8 @@
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe.config
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csprojResolveAssemblyReference.cache
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Properties.Resources.resources
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csproj.GenerateResource.Cache
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.pdb
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.exe
+c:\users\ruyin\documents\visual studio 2013\Projects\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.pdb
