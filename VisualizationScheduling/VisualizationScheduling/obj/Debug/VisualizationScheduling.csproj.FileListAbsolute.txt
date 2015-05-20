@@ -12,7 +12,7 @@ D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduli
 D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe
 D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.pdb
 D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csprojResolveAssemblyReference.cache
-D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Main_From.resources
 D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Properties.Resources.resources
 D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Sub_From.resources
 D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csproj.GenerateResource.Cache
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Visualization_Scheduling.resources
