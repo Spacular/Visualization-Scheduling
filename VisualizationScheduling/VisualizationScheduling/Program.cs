@@ -16,7 +16,7 @@ namespace VisualizationScheduling
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Visualization_Scheduling());
+            Application.Run(new Main_From());
         }
     }
 }
