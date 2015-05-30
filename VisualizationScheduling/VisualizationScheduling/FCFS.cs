@@ -25,9 +25,6 @@ namespace VisualizationScheduling
     {
         public static List<Result> Run(List<Process> jobList, List<Result> resultList)
         {
-            string s;
-            s = jobList.Count.ToString();
-            MessageBox.Show(s);
             int currentProcess = 0;
             int cpuTime = 0;
             int cpuDone = 0;

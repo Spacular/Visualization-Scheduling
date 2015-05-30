@@ -235,7 +235,6 @@ namespace VisualizationScheduling
                 {
                     Schedul[x] = true;
                 }
-                MessageBox.Show(s);
             }
         }
 
