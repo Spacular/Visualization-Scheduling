@@ -8,5 +8,6 @@ namespace VisualizationScheduling
 {
     class Priority
     {
+
     }
 }

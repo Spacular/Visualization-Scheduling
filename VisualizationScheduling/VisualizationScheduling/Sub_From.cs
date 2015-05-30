@@ -18,8 +18,9 @@ namespace VisualizationScheduling
         public Visualization_Scheduling main = new Visualization_Scheduling();
         int j = 0;
         public Boolean flag = false;
-        string[] strvalue = new string[10];
-        int[] value = new int[10];
+        string[] strvalue = new string[100];
+        int[] value = new int[100];
+        Boolean[] Schedul = new Boolean[5];
         enum Calor { Red = 1, Yellow = 2, Blue = 3 };
 
         public Sub_From()
@@ -32,7 +33,6 @@ namespace VisualizationScheduling
             fcfs = new List<Result>();
             main = _form;
             oList = main.pList;
-            int i;
             fcfs = FCFS.Run(oList, fcfs);
             if (fcfs.Count == 0)
             {
@@ -54,11 +54,6 @@ namespace VisualizationScheduling
                 dataGridView1.Rows.Add(row);
                 j++;
             }
-
-
-
-            label1.Text = "전체 실행시간: " + (fcfs[fcfs.Count - 1].startP + fcfs[fcfs.Count - 1].burstTime).ToString();
-            label2.Text = "평균 대기시간: " + (watingTime / fcfs.Count).ToString();
 
           /*  chart1.ChartAreas["Area"].CursorX.IsUserSelectionEnabled = true;
             chart1.ChartAreas["Area"].CursorY.IsUserSelectionEnabled = true;
@@ -115,6 +110,8 @@ namespace VisualizationScheduling
                 waitingTime += (double)r.waitingTime;
 
             }
+            label1.Text = "전체 실행시간: " + (fcfs[fcfs.Count - 1].startP + fcfs[fcfs.Count - 1].burstTime).ToString();
+            label2.Text = "평균 대기시간: " + (waitingTime / fcfs.Count).ToString();
             if (flag == true)
             {
                 return;
@@ -124,12 +121,6 @@ namespace VisualizationScheduling
             chart1_Load(sender, e);
             flag = true;
         }
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
         public void Page_Load(object sender, EventArgs e)
         {
                 for (int i = 0; i < j; i++)
