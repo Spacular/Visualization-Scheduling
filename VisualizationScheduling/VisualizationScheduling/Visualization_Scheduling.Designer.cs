@@ -62,11 +62,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.추가 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -98,6 +98,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(547, 246);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEndEdit);
             // 
             // ProcessID
@@ -331,6 +332,26 @@
             this.panel1.Size = new System.Drawing.Size(546, 197);
             this.panel1.TabIndex = 11;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(142, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(123, 61);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "전체선택";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(271, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(123, 61);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "선택해제";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // 추가
             // 
             this.추가.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
@@ -361,29 +382,9 @@
             this.checkedListBox1.TabIndex = 12;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(271, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(123, 61);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "선택해제";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // processBindingSource
             // 
             this.processBindingSource.DataSource = typeof(VisualizationScheduling.Process);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(142, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 61);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "전체선택";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Visualization_Scheduling
             // 

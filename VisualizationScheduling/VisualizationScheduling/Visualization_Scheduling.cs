@@ -103,7 +103,7 @@ namespace VisualizationScheduling
                 Process p = new Process(int.Parse(token[1]), int.Parse(token[2]), int.Parse(token[3]), int.Parse(token[4]));
                 pList.Add(p);
             }
-
+            /////////////////////////////Data Gridview에 값넣음/////////////////////////
             ReadedFile = true;
             dataGridView1.Rows.Clear();
             string[] row = { "", "", "", "" };
@@ -174,7 +174,7 @@ namespace VisualizationScheduling
             MessageBox.Show("Team : 김상욱, 이근열, 이언우\nO/S Term Project(Scheduling)","About");
         }
 
-        private void runToolStripMenuItem_Click(object sender, EventArgs e)
+        private void runToolStripMenuItem_Click(object sender, EventArgs e) //Run버튼//서브폼 호출
         {
             if (pList.Count == 0)
             {
@@ -186,25 +186,24 @@ namespace VisualizationScheduling
             
         }
 
-        private void runToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void runToolStripMenuItem1_Click(object sender, EventArgs e) //Run버튼
         {
             runToolStripMenuItem_Click(sender, e);
         }
 
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)// datagridview에 수정일어나면 색변화
         {
-
             dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = System.Drawing.Color.Plum;
         }
 
-        private void 추가_Click(object sender, EventArgs e)
+        private void 추가_Click(object sender, EventArgs e) //datagridview에 랜덤값 넣기
         {
             dataGridView1.Rows.Clear();
             Random rm = new Random();
-            int[] array = new int[100];
+            int[] array = new int[10];
             int burst;
             int priorty;
-            for (int i = pList.Count; i < 100; i++)
+            for (int i = pList.Count; i < 10; i++)
             {
                 array[i] = rm.Next(0, 30);
                 burst = rm.Next(1, 30);
@@ -226,19 +225,26 @@ namespace VisualizationScheduling
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
         }
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) // 체크리스트에서 선택된것만 (미완)
         {
-            if (checkedListBox1.CheckedItems.Count != 0)
-            {
-                string s = "";
-                for (int x = 0; x <= checkedListBox1.CheckedItems.Count - 1; x++)
+
+                for (int i = 0; i <= (checkedListBox1.Items.Count - 1); i++)
                 {
-                    Schedul[x] = true;
+                    if (checkedListBox1.GetItemChecked(i) == true)
+                    {
+                        Schedul[i] = true;
+                    }
                 }
-            }
+                for (int i = 0; i <= (checkedListBox1.Items.Count - 1); i++)
+                {
+                    if (checkedListBox1.GetItemChecked(i) == false)
+                    {
+                        Schedul[i] = false;
+                    }
+                }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)// 전체 체크리스트 해제
         {
 
             CheckedListBox list;
@@ -250,15 +256,20 @@ namespace VisualizationScheduling
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //전체 체크리스트 선택
         {
             CheckedListBox list;
             list = checkedListBox1;
             for (int i = 0; i < list.Items.Count; i++)
             {
                 list.SetItemChecked(i, true);
-                Schedul[i] = true; ;
+                Schedul[i] = true; 
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

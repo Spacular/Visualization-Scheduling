@@ -39,7 +39,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ProcessID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BurstTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Priorty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,7 +68,7 @@
             // 
             // BurstTime
             // 
-            this.BurstTime.Name = "BurstTime";
+            this.Priorty.Name = "BurstTime";
             // 
             // panel1
             // 
@@ -107,7 +107,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProcessID,
-            this.BurstTime,
+            this.Priorty,
             this.WatingTime});
             this.dataGridView1.Location = new System.Drawing.Point(13, 31);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -163,7 +163,6 @@
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(345, 248);
             this.chart1.TabIndex = 8;
-            this.chart1.Text = "chart1";
             // 
             // chart2
             // 
@@ -183,7 +182,6 @@
             this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(345, 248);
             this.chart2.TabIndex = 11;
-            this.chart2.Text = "chart2";
             // 
             // printDialog1
             // 
@@ -204,7 +202,6 @@
             this.chart3.Series.Add(series3);
             this.chart3.Size = new System.Drawing.Size(345, 244);
             this.chart3.TabIndex = 12;
-            this.chart3.Text = "chart3";
             // 
             // Sub_From
             // 
@@ -245,6 +242,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProcessID;
         private System.Windows.Forms.DataGridViewTextBoxColumn WatingTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn BurstTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Priorty;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;

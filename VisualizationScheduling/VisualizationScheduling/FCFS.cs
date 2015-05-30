@@ -10,14 +10,16 @@ namespace VisualizationScheduling
         public int processID;
         public int burstTime;
         public int waitingTime;
+        public int priorty;
         public int asame;
 
-        public ReadyQueueElement(int processID, int burstTime, int waitingTime, int asame)
+        public ReadyQueueElement(int processID, int burstTime, int waitingTime, int asame, int priorty)
         {
             this.processID = processID;
             this.burstTime = burstTime;
             this.waitingTime = waitingTime;
             this.asame = asame;
+            this.priorty = priorty;
         }
     }
 
@@ -48,7 +50,7 @@ namespace VisualizationScheduling
                     if (frontJob.ArriveTime == runTime)
                     {
 
-                        readyQueue.Add(new ReadyQueueElement(frontJob.ProcessID, frontJob.BurstTime, 0, frontJob.same));
+                        readyQueue.Add(new ReadyQueueElement(frontJob.ProcessID, frontJob.BurstTime, 0, frontJob.same,frontJob.Priority));
                         jobList.RemoveAt(0);
                     }
                 }
@@ -59,7 +61,7 @@ namespace VisualizationScheduling
                     {
 
                         ReadyQueueElement rq = readyQueue.ElementAt(0);
-                        resultList.Add(new Result(rq.processID, runTime, rq.burstTime, rq.waitingTime + rq.asame));
+                        resultList.Add(new Result(rq.processID, runTime, rq.burstTime, rq.waitingTime + rq.asame,rq.priorty));
                         cpuDone = rq.burstTime;
                         cpuTime = 0;
                         currentProcess = rq.processID;

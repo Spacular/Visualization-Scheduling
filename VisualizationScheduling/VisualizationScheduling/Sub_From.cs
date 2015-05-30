@@ -33,26 +33,27 @@ namespace VisualizationScheduling
             fcfs = new List<Result>();
             main = _form;
             oList = main.pList;
-            fcfs = FCFS.Run(oList, fcfs);
-            if (fcfs.Count == 0)
+            if (main.Schedul[0] == true)
             {
-                MessageBox.Show("Data가 없습니다.", "Error");
-                return;
-                
+                fcfs = FCFS.Run(oList, fcfs); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
+                dataGridView1.Rows.Clear();
+                string[] row = { "", "", "" };
+                double watingTime = 0.0;
+                foreach (Result r in fcfs)
+                {
+                    row[0] = r.processID.ToString();
+                    row[1] = r.burstTime.ToString();
+                    row[2] = r.waitingTime.ToString();
+                    strvalue[j] = row[0];
+                    value[j] = Convert.ToInt32(row[2]);
+                    watingTime += r.waitingTime;
+                    dataGridView1.Rows.Add(row);
+                    j++;
+                }
             }
-            dataGridView1.Rows.Clear();
-            string[] row = { "", "", ""};
-            double watingTime = 0.0;
-            foreach (Result r in fcfs)
+            else
             {
-                row[0] = r.processID.ToString();
-                row[1] = r.burstTime.ToString();
-                row[2] = r.waitingTime.ToString();
-                strvalue[j] = row[0];
-                value[j] = Convert.ToInt32(row[2]);
-                watingTime += r.waitingTime;
-                dataGridView1.Rows.Add(row);
-                j++;
+                MessageBox.Show("FCFS가 선택되지 않았습니다..", "Warning");
             }
 
           /*  chart1.ChartAreas["Area"].CursorX.IsUserSelectionEnabled = true;
@@ -88,6 +89,10 @@ namespace VisualizationScheduling
 
         public void panel1_Paint(object sender, PaintEventArgs e)
         {
+            if (main.Schedul[0] == false)
+            {
+                return;
+            }
             int startPosition = 10;
             double waitingTime = 0.0;
             Random rand = new Random();
