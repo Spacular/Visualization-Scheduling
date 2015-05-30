@@ -66,7 +66,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.추가 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -324,17 +327,19 @@
             // panel1
             // 
             this.panel1.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.추가);
-            this.panel1.Location = new System.Drawing.Point(19, 539);
+            this.panel1.Location = new System.Drawing.Point(19, 574);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(546, 197);
             this.panel1.TabIndex = 11;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(142, 15);
+            this.button2.Location = new System.Drawing.Point(12, 8);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(123, 61);
             this.button2.TabIndex = 2;
@@ -344,7 +349,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(271, 15);
+            this.button1.Location = new System.Drawing.Point(139, 8);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(123, 61);
             this.button1.TabIndex = 1;
@@ -355,7 +360,7 @@
             // 추가
             // 
             this.추가.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.추가.Location = new System.Drawing.Point(15, 15);
+            this.추가.Location = new System.Drawing.Point(268, 8);
             this.추가.Name = "추가";
             this.추가.Size = new System.Drawing.Size(123, 61);
             this.추가.TabIndex = 0;
@@ -375,16 +380,46 @@
             "SJF",
             "RR",
             "Priorty"});
-            this.checkedListBox1.Location = new System.Drawing.Point(16, 345);
+            this.checkedListBox1.Location = new System.Drawing.Point(16, 463);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.ScrollAlwaysVisible = true;
-            this.checkedListBox1.Size = new System.Drawing.Size(547, 175);
+            this.checkedListBox1.Size = new System.Drawing.Size(547, 113);
             this.checkedListBox1.TabIndex = 12;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(18, 325);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(544, 132);
+            this.textBox2.TabIndex = 13;
+            this.textBox2.Text = "####DataView에 값을 입력####\r\n\r\n1. 값을 100이상 입력하면 자동으로 100이하로 바뀝니다.\r\n\r\n2. ProcessID는 겹치" +
+    "지 않게 입력하시오.\r\n\r\n3. 문자는 입력하지 마시오.";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(397, 8);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(123, 61);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "All_Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // processBindingSource
             // 
             this.processBindingSource.DataSource = typeof(VisualizationScheduling.Process);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(12, 75);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(123, 61);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "ProcessID 정렬";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Visualization_Scheduling
             // 
@@ -393,6 +428,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(579, 785);
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label4);
@@ -456,6 +492,9 @@
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
 
     }
 }

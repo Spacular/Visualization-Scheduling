@@ -196,43 +196,72 @@ namespace VisualizationScheduling
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)// datagridview에 수정일어나면 색변화
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)// datagridview에 동적수정이 일어나면 색변화
         {
             string str;
+            int temp;
+            int[] random = new int[4];
             if (pList.Count <= e.RowIndex)
             {
                 Random rm = new Random();
-                Process p = new Process(1, rm.Next(0,30), rm.Next(1, 30), rm.Next(1, 10));
-                pList.Add(p);
+                random[0] = rm.Next(1, 10);
+                random[1] = rm.Next(0, 30);
+                random[2] = rm.Next(0, 30);
+                random[3] = rm.Next(1, 10);
+                Process p = new Process(random[0], random[1], random[2], random[3]);
+                MessageBox.Show("같은 행에 존재하는 나머지 항목들도 값을 입력하세요. 입력하지 않으면 랜덤값으로 생성됩니다.", "Warning");
+                for (int i = 0; i < 4; i++)
+                {
+                    if(i != e.ColumnIndex)
+                    {
+                        dataGridView1.Rows[e.RowIndex].Cells[i].Value = random[i].ToString();
+                    }
+                }
+                    pList.Add(p);
             }
             if (e.ColumnIndex == 0)
             {
                 str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                MessageBox.Show(str);
-                pList.ElementAt(e.RowIndex).ProcessID = Convert.ToInt32(str);
-                if (pList.ElementAt(e.RowIndex).ProcessID > 100)
+                temp = Convert.ToInt32(str);
+                if (temp > 100)
                 {
-                    pList.ElementAt(e.RowIndex).ProcessID = pList.ElementAt(e.RowIndex).ProcessID % 100;
-                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    temp = temp % 100;
                 }
+                pList.ElementAt(e.RowIndex).ProcessID = temp;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = temp.ToString();
             }
             else if (e.ColumnIndex == 1)
             {
                 str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                MessageBox.Show(str);
-                pList.ElementAt(e.RowIndex).ArriveTime = Convert.ToInt32(str);
+                temp = Convert.ToInt32(str);
+                if (temp > 100)
+                {
+                    temp = temp % 100;
+                }
+                pList.ElementAt(e.RowIndex).ArriveTime = temp;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = temp.ToString();
             }
             else if (e.ColumnIndex == 2)
             {
                 str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                MessageBox.Show(str);
-                pList.ElementAt(e.RowIndex).BurstTime = Convert.ToInt32(str);
+                temp = Convert.ToInt32(str);
+                if (temp > 100)
+                {
+                    temp = temp % 100;
+                }
+                pList.ElementAt(e.RowIndex).BurstTime = temp;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = temp.ToString();
             }
             else if (e.ColumnIndex == 3)
             {
                 str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                MessageBox.Show(str);
-                pList.ElementAt(e.RowIndex).Priority = Convert.ToInt32(str);
+                temp = Convert.ToInt32(str);
+                if (temp > 100)
+                {
+                    temp = temp % 100;
+                }
+                pList.ElementAt(e.RowIndex).Priority = temp;
+                dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = temp.ToString();
             }
             dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = System.Drawing.Color.Plum;
         }
@@ -307,11 +336,31 @@ namespace VisualizationScheduling
                 Schedul[i] = true; 
             }
         }
-        private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)//설명TEXT_BOX
         {
             string s;
             s = this.textBox1.Text;
             MessageBox.Show(s);
+        }
+
+        private void button3_Click(object sender, EventArgs e)//입력된 모든것을 지운다
+        {
+            this.pList.Clear();
+            this.dataGridView1.Rows.Clear();
+            this.textBox1.Clear();
+        }
+        private void button4_Click(object sender, EventArgs e)//processID 정렬
+        {
+            for (int i = 0; i < pList.Count; i++)
+            {
+                pList.ElementAt(i).ProcessID = i+1;
+                dataGridView1.Rows[i].Cells[0].Value = (i+1).ToString();
+            }
+            pList.Sort(delegate(Process x, Process y)
+            {
+                return x.ArriveTime.CompareTo(y.ArriveTime);
+            });
+
         }
     }
 }

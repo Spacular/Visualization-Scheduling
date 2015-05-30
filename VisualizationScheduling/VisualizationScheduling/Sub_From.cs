@@ -116,14 +116,13 @@ namespace VisualizationScheduling
                 waitingTime += (double)r.waitingTime;
 
             }
-            label1.Text = "전체 실행시간: " + (fcfs[fcfs.Count - 1].startP + fcfs[fcfs.Count - 1].burstTime).ToString();
-            label2.Text = "평균 대기시간: " + (waitingTime / fcfs.Count).ToString();
+            FCFS_label.Text = "전체 실행시간: " + (fcfs[fcfs.Count - 1].startP + fcfs[fcfs.Count - 1].burstTime).ToString();
+            FCFS_label2.Text = "평균 대기시간: " + (waitingTime / fcfs.Count).ToString();
             if (flag == true)
             {
                 return;
             }
             Page_Load(sender, e);
-            chart3_Load(sender, e);
             chart1_Load(sender, e);
             flag = true;
         }
@@ -135,26 +134,15 @@ namespace VisualizationScheduling
                     {
                         continue;
                     }
-                    chart2.Series[0].Points.Add(value[i]);
+                    FCFS_Chart2.Series[0].Points.Add(value[i]);
                 }
-                chart2.Series[0]["PieDrawingStyle"] = "Concave";
-                chart2.Series[0]["DounutRadius"] = "40";
+                FCFS_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
+                FCFS_Chart2.Series[0]["DounutRadius"] = "40";
         }
-        public void chart3_Load(object sender, EventArgs e)
-        {
-            for (int i = 0; i < j; i++)
-            {
-                if (value[i] == 0)
-                {
-                    continue;
-                }
-                chart3.Series[0].Points.Add(value[i]);
-            }
-            chart3.Series[0]["LineDrawingStyle"] = "Concave";
-        }
+
         public void chart1_Load(object sender, EventArgs e)
         {
-            chart1.Series.Clear();
+            FCFC_Chart.Series.Clear();
             for (int i = 0; i < j; i++)
             {
                 System.Windows.Forms.DataVisualization.Charting.Series se = new
@@ -162,7 +150,7 @@ namespace VisualizationScheduling
                 se.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
                 se.Name = strvalue[i];
                 se.Points.Add(value[i]);
-                chart1.Series.Add(se);
+                FCFC_Chart.Series.Add(se);
             }
         }
     }
