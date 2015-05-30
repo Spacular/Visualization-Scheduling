@@ -37,13 +37,14 @@ namespace VisualizationScheduling
             {
                 fcfs = FCFS.Run(oList, fcfs); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
                 dataGridView1.Rows.Clear();
-                string[] row = { "", "", "" };
+                string[] row = { "", "", "",""};
                 double watingTime = 0.0;
                 foreach (Result r in fcfs)
                 {
                     row[0] = r.processID.ToString();
                     row[1] = r.burstTime.ToString();
                     row[2] = r.waitingTime.ToString();
+                    row[3] = r.Priority.ToString();
                     strvalue[j] = row[0];
                     value[j] = Convert.ToInt32(row[2]);
                     watingTime += r.waitingTime;

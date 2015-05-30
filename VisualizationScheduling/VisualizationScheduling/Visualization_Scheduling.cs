@@ -190,12 +190,53 @@ namespace VisualizationScheduling
         {
             runToolStripMenuItem_Click(sender, e);
         }
-
+       
+        /// <summary>
+        /// ////////////////////////////////////////////////이부분 부터 손대지 마시오..........................
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)// datagridview에 수정일어나면 색변화
         {
+            string str;
+            if (pList.Count <= e.RowIndex)
+            {
+                Random rm = new Random();
+                Process p = new Process(1, rm.Next(0,30), rm.Next(1, 30), rm.Next(1, 10));
+                pList.Add(p);
+            }
+            if (e.ColumnIndex == 0)
+            {
+                str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                MessageBox.Show(str);
+                pList.ElementAt(e.RowIndex).ProcessID = Convert.ToInt32(str);
+                if (pList.ElementAt(e.RowIndex).ProcessID > 100)
+                {
+                    pList.ElementAt(e.RowIndex).ProcessID = pList.ElementAt(e.RowIndex).ProcessID % 100;
+                    dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                }
+            }
+            else if (e.ColumnIndex == 1)
+            {
+                str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                MessageBox.Show(str);
+                pList.ElementAt(e.RowIndex).ArriveTime = Convert.ToInt32(str);
+            }
+            else if (e.ColumnIndex == 2)
+            {
+                str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                MessageBox.Show(str);
+                pList.ElementAt(e.RowIndex).BurstTime = Convert.ToInt32(str);
+            }
+            else if (e.ColumnIndex == 3)
+            {
+                str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                MessageBox.Show(str);
+                pList.ElementAt(e.RowIndex).Priority = Convert.ToInt32(str);
+            }
             dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = System.Drawing.Color.Plum;
         }
-
+        /// ////////////////////////////////////////////////이부분 까지//////////////////////////////////////////////////
         private void 추가_Click(object sender, EventArgs e) //datagridview에 랜덤값 넣기
         {
             dataGridView1.Rows.Clear();
@@ -203,7 +244,7 @@ namespace VisualizationScheduling
             int[] array = new int[10];
             int burst;
             int priorty;
-            for (int i = pList.Count; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 array[i] = rm.Next(0, 30);
                 burst = rm.Next(1, 30);
@@ -266,10 +307,11 @@ namespace VisualizationScheduling
                 Schedul[i] = true; 
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
+            string s;
+            s = this.textBox1.Text;
+            MessageBox.Show(s);
         }
     }
 }

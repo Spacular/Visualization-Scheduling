@@ -39,6 +39,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ProcessID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BurstTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Priorty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,7 +69,11 @@
             // 
             // BurstTime
             // 
-            this.Priorty.Name = "BurstTime";
+            this.BurstTime.Name = "BurstTime";
+            // 
+            // Priorty
+            // 
+            this.Priorty.Name = "Priorty";
             // 
             // panel1
             // 
@@ -107,8 +112,9 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProcessID,
-            this.Priorty,
-            this.WatingTime});
+            this.BurstTime,
+            this.WatingTime,
+            this.Priorty});
             this.dataGridView1.Location = new System.Drawing.Point(13, 31);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
@@ -243,7 +249,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WatingTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn BurstTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Priorty;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
