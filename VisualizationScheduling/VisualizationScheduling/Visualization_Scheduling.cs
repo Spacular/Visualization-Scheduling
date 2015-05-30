@@ -18,7 +18,8 @@ namespace VisualizationScheduling
         public List<Result> resultList;
         string[] StrData;
         public string path;
-        public int a = 10;
+        public int a;
+        public Boolean[] Schedul = new Boolean[5];
         
         
         public Visualization_Scheduling()
@@ -200,13 +201,15 @@ namespace VisualizationScheduling
         {
             dataGridView1.Rows.Clear();
             Random rm = new Random();
-            int[] array = new int[10];
-            int burst; 
-            for (int i = pList.Count+1; i < 10; i++)
+            int[] array = new int[100];
+            int burst;
+            int priorty;
+            for (int i = pList.Count; i < 100; i++)
             {
                 array[i] = rm.Next(0, 30);
                 burst = rm.Next(1, 30);
-                Process p = new Process(i, array[i], burst, 1);
+                priorty = rm.Next(1, 10);
+                Process p = new Process(i+1, array[i], burst, priorty);
                 pList.Add(p);
             }
             string[] row = { "", "", "", "" };
@@ -222,6 +225,41 @@ namespace VisualizationScheduling
             {
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
+        }
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (checkedListBox1.CheckedItems.Count != 0)
+            {
+                string s = "";
+                for (int x = 0; x <= checkedListBox1.CheckedItems.Count - 1; x++)
+                {
+                    Schedul[x] = true;
+                }
+                MessageBox.Show(s);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            CheckedListBox list;
+            list = checkedListBox1;
+            for (int i = 0; i < list.Items.Count; i++)
+            {
+                list.SetItemChecked(i, false);
+                Schedul[i] = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CheckedListBox list;
+            list = checkedListBox1;
+            for (int i = 0; i < list.Items.Count; i++)
+            {
+                list.SetItemChecked(i, true);
+                Schedul[i] = true; ;
+            }
         }
     }
 }
