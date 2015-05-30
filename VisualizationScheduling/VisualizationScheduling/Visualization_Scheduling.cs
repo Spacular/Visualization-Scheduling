@@ -14,15 +14,18 @@ namespace VisualizationScheduling
     public partial class Visualization_Scheduling : Form
     {
         private bool ReadedFile = false;
-        List<Process> pList, pView;
+        public List<Process> pList, pView;
+        public List<Result> resultList;
         string[] StrData;
-
+        public string path;
+        public int a = 10;
+        
+        
         public Visualization_Scheduling()
         {
             InitializeComponent();
         }
-
-        private void Main_From_Load(object sender, EventArgs e)
+        public void Main_From_Load(object sender, EventArgs e)
         {
             pList = new List<Process>();
             pView = new List<Process>();
@@ -33,6 +36,7 @@ namespace VisualizationScheduling
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
+           
         }
 
         private string SelectFilePath()
@@ -40,10 +44,13 @@ namespace VisualizationScheduling
             openFileDialog1.Filter = "텍스트파일|*.txt";
             return (openFileDialog1.ShowDialog() == DialogResult.OK) ? openFileDialog1.FileName : null;
         }
-
         private void newToolStripMenuItem_Click(object sender, EventArgs e) //New
         {
-
+            pView.Clear();
+            pList.Clear();
+            dataGridView1.Rows.Clear();
+            Visualization_Scheduling vi = new Visualization_Scheduling();
+            vi.Show();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e) //Open
@@ -51,13 +58,10 @@ namespace VisualizationScheduling
             pView.Clear();
             pList.Clear();
 
-            //파일 오픈
-            string path = SelectFilePath();
+            path = SelectFilePath();
             if (path == null) return;
-
             StrData = File.ReadAllLines(path);
 
-            //토큰 분리
             for (int i = 0; i < StrData.Length; i++)
             {
                 string[] token = StrData[i].Split(' ');
@@ -65,7 +69,7 @@ namespace VisualizationScheduling
                 pList.Add(p);
             }
 
-            //Grid에 process 출력
+            ReadedFile = true;
             dataGridView1.Rows.Clear();
             string[] row = { "", "", "", "" };
             foreach (Process p in pList)
@@ -74,28 +78,24 @@ namespace VisualizationScheduling
                 row[1] = p.ArriveTime.ToString();
                 row[2] = p.BurstTime.ToString();
                 row[3] = p.Priority.ToString();
-
                 dataGridView1.Rows.Add(row);
             }
-
-            //arriveTime으로 정렬
             pList.Sort(delegate(Process x, Process y)
             {
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
-
-            ReadedFile = true;
+            textBox1.Text = path;
+            
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e) //Add
         {
             //파일 오픈
-            string path = SelectFilePath();
+            path = SelectFilePath();
             if (path == null) return;
 
             StrData = File.ReadAllLines(path);
 
-            //토큰 분리
             for (int i = 0; i < StrData.Length; i++)
             {
                 string[] token = StrData[i].Split(' ');
@@ -103,7 +103,7 @@ namespace VisualizationScheduling
                 pList.Add(p);
             }
 
-            //Grid에 process 출력
+            ReadedFile = true;
             dataGridView1.Rows.Clear();
             string[] row = { "", "", "", "" };
             foreach (Process p in pList)
@@ -115,6 +115,10 @@ namespace VisualizationScheduling
 
                 dataGridView1.Rows.Add(row);
             }
+            pList.Sort(delegate(Process x, Process y)
+            {
+                return x.ArriveTime.CompareTo(y.ArriveTime);
+            });
             /*
             foreach (DataGridViewRow rows in dataGridView1.Rows)
             {
@@ -136,39 +140,88 @@ namespace VisualizationScheduling
             } */
 
             //arriveTime으로 정렬
+        }
+        private void openToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+          openToolStripMenuItem_Click(sender, e);
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //reference : http://stackoverflow.com/questions/12977924/how-to-properly-exit-a-c-sharp-application
+            if (MessageBox.Show("종료하시겠습니까?", "종료창", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                if (System.Windows.Forms.Application.MessageLoop)
+                {
+                    // WinForms app
+                    System.Windows.Forms.Application.Exit();
+                }
+                else
+                {
+                    // Console app
+                    System.Environment.Exit(1);
+                }
+            }
+            else
+            {
+
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Team : 김상욱, 이근열, 이언우\nO/S Term Project(Scheduling)","About");
+        }
+
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (pList.Count == 0)
+            {
+                MessageBox.Show("Data Nothing", "error");
+                return;
+            }
+            Sub_From frm = new Sub_From(this);
+            frm.ShowDialog();
+            
+        }
+
+        private void runToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            runToolStripMenuItem_Click(sender, e);
+        }
+
+        private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+            dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = System.Drawing.Color.Plum;
+        }
+
+        private void 추가_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            Random rm = new Random();
+            int[] array = new int[10];
+            int burst; 
+            for (int i = pList.Count+1; i < 10; i++)
+            {
+                array[i] = rm.Next(0, 30);
+                burst = rm.Next(1, 30);
+                Process p = new Process(i, array[i], burst, 1);
+                pList.Add(p);
+            }
+            string[] row = { "", "", "", "" };
+            foreach (Process p in pList)
+            {
+                row[0] = p.ProcessID.ToString();
+                row[1] = p.ArriveTime.ToString();
+                row[2] = p.BurstTime.ToString();
+                row[3] = p.Priority.ToString();
+                dataGridView1.Rows.Add(row);
+            }
             pList.Sort(delegate(Process x, Process y)
             {
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
-
-            ReadedFile = true;
         }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e) //Save
-        {
-
-        }
-
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e) //Save As
-        {
-
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e) //Exit
-        {
-            //reference : http://stackoverflow.com/questions/12977924/how-to-properly-exit-a-c-sharp-application
-            if (System.Windows.Forms.Application.MessageLoop)
-            {
-                // WinForms app
-                System.Windows.Forms.Application.Exit();
-            }
-            else
-            {
-                // Console app
-                System.Environment.Exit(1);
-            }
-        }
-
-
     }
 }

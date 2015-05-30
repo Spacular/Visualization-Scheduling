@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace VisualizationScheduling
 {
-    class Process
+    public class Process
     {
-        public int ProcessID; //Process ID
-        public int ArriveTime; //Arriving Time
-        public int BurstTime; // Burst Time
-        public int Priority; //Priority each Process
+        public int ProcessID; 
+        public int ArriveTime; 
+        public int BurstTime;   
+        public int Priority;
+        public int same = 0;
 
         public Process(int ProcessID, int ArriveTime, int BurstTime, int Priority)
         {

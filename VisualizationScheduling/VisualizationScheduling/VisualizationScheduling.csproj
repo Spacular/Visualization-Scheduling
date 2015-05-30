@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,6 +49,8 @@
     <Compile Include="Process.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Results.cs" />
     <Compile Include="RR.cs" />
     <Compile Include="SJF.cs" />
     <Compile Include="SRT.cs" />
@@ -79,6 +82,7 @@
     <EmbeddedResource Include="Visualization_Scheduling.resx">
       <DependentUpon>Visualization_Scheduling.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Process.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
