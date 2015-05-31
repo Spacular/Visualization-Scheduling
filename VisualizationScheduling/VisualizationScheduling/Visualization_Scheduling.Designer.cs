@@ -62,14 +62,14 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.추가 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -313,16 +313,15 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(303, 25);
             this.textBox1.TabIndex = 9;
-            this.textBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseDoubleClick);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(187, 34);
+            this.label4.Location = new System.Drawing.Point(158, 36);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.Size = new System.Drawing.Size(96, 15);
             this.label4.TabIndex = 10;
-            this.label4.Text = "저장경로";
+            this.label4.Text = "TimeQuantum";
             // 
             // panel1
             // 
@@ -336,6 +335,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(546, 197);
             this.panel1.TabIndex = 11;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(12, 75);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(123, 61);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "ProcessID 정렬";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(397, 8);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(123, 61);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "All_Clear";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -397,34 +416,16 @@
             this.textBox2.Text = "####DataView에 값을 입력####\r\n\r\n1. 값을 100이상 입력하면 자동으로 100이하로 바뀝니다.\r\n\r\n2. ProcessID는 겹치" +
     "지 않게 입력하시오.\r\n\r\n3. 문자는 입력하지 마시오.";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(397, 8);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(123, 61);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "All_Clear";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // processBindingSource
             // 
             this.processBindingSource.DataSource = typeof(VisualizationScheduling.Process);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(12, 75);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(123, 61);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "ProcessID 정렬";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Visualization_Scheduling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(579, 785);
             this.ContextMenuStrip = this.contextMenuStrip1;

@@ -17,6 +17,7 @@ namespace VisualizationScheduling
         public List<Process> pList, pView;
         public List<Result> resultList;
         string[] StrData;
+        public double TimeQuntam;
         public string path;
         public int a;
         public Boolean[] Schedul = new Boolean[5];
@@ -181,9 +182,18 @@ namespace VisualizationScheduling
                 MessageBox.Show("Data Nothing", "error");
                 return;
             }
-            Sub_From frm = new Sub_From(this);
-            frm.ShowDialog();
-            
+            if (Schedul[0] == true || Schedul[1] == true || Schedul[2] == true || Schedul[4] == true)
+            {
+                Sub_From frm = new Sub_From(this);
+                frm.ShowDialog();
+            }
+            if (Schedul[3])
+            {
+                RR_Form frm2 = new RR_Form(this);
+                frm2.ShowDialog();
+            }
+            TimeQuntam = Convert.ToDouble(textBox1.Text);
+            TimeQuntam = double.Parse(textBox1.Text);
         }
 
         private void runToolStripMenuItem1_Click(object sender, EventArgs e) //Run버튼
@@ -200,6 +210,7 @@ namespace VisualizationScheduling
         {
             string str;
             int temp;
+            string temp2;
             int[] random = new int[4];
             if (pList.Count <= e.RowIndex)
             {
@@ -209,16 +220,45 @@ namespace VisualizationScheduling
                 random[2] = rm.Next(0, 30);
                 random[3] = rm.Next(1, 10);
                 Process p = new Process(random[0], random[1], random[2], random[3]);
-                MessageBox.Show("같은 행에 존재하는 나머지 항목들도 값을 입력하세요. 입력하지 않으면 랜덤값으로 생성됩니다.", "Warning");
+               // MessageBox.Show("같은 행에 존재하는 나머지 항목들도 값을 입력하세요. 입력하지 않으면 랜덤값으로 생성됩니다.", "Warning");
                 for (int i = 0; i < 4; i++)
                 {
                     if(i != e.ColumnIndex)
                     {
                         dataGridView1.Rows[e.RowIndex].Cells[i].Value = random[i].ToString();
                     }
+                    else
+                    {
+                        if (i == 1)
+                        {
+                            temp2 = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                            temp = Convert.ToInt32(temp2);
+                            p.ArriveTime = temp;
+                        }
+                        if (i == 2)
+                        {
+                            temp2 = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                            temp = Convert.ToInt32(temp2);
+                            p.BurstTime = temp;
+                        }
+                        if (i == 3)
+                        {
+                            temp2 = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                            temp = Convert.ToInt32(temp2);
+                            p.Priority = temp;
+                        }
+                        if (i == 0)
+                        {
+                            temp2 = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                            temp = Convert.ToInt32(temp2);
+                            p.ProcessID = temp;
+                        }
+                        
+                    }
                 }
                     pList.Add(p);
             }
+
             if (e.ColumnIndex == 0)
             {
                 str = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
@@ -336,18 +376,13 @@ namespace VisualizationScheduling
                 Schedul[i] = true; 
             }
         }
-        private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)//설명TEXT_BOX
-        {
-            string s;
-            s = this.textBox1.Text;
-            MessageBox.Show(s);
-        }
 
         private void button3_Click(object sender, EventArgs e)//입력된 모든것을 지운다
         {
             this.pList.Clear();
             this.dataGridView1.Rows.Clear();
             this.textBox1.Clear();
+            this.button1_Click(sender, e);
         }
         private void button4_Click(object sender, EventArgs e)//processID 정렬
         {

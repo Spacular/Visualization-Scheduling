@@ -33,7 +33,8 @@ namespace VisualizationScheduling
             fcfs = new List<Result>();
             main = _form;
             oList = main.pList;
-            if (main.Schedul[0] == true)
+            //변수 정의
+            if (main.Schedul[0] == true)//fCFS
             {
                 fcfs = FCFS.Run(oList, fcfs); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
                 dataGridView1.Rows.Clear();
@@ -52,9 +53,25 @@ namespace VisualizationScheduling
                     j++;
                 }
             }
+            else if (main.Schedul[1] == true)//SRT
+            {
+
+            }
+            else if (main.Schedul[2] == true)//SJF
+            {
+
+            }
+            else if (main.Schedul[3] == true)//RR
+            {
+
+            }
+            else if (main.Schedul[4] == true)//Priorty
+            {
+
+            }
             else
             {
-                MessageBox.Show("FCFS가 선택되지 않았습니다..", "Warning");
+                MessageBox.Show("선택된 Scheduling이 없습니다.", "Warning");
             }
 
           /*  chart1.ChartAreas["Area"].CursorX.IsUserSelectionEnabled = true;
@@ -76,8 +93,6 @@ namespace VisualizationScheduling
             }
         
         }
-
-
         private void saveAsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (main.path == null)
@@ -87,7 +102,6 @@ namespace VisualizationScheduling
             }
    
         }
-
         public void panel1_Paint(object sender, PaintEventArgs e)
         {
             if (main.Schedul[0] == false)
@@ -108,11 +122,11 @@ namespace VisualizationScheduling
             foreach (Result r in fcfs)
             {
                 brushBack = new SolidBrush(randomColor);
-                e.Graphics.DrawString("proc" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 14), resultListPosition);
-                e.Graphics.FillRectangle(brushBack, startPosition + (r.startP * 14), resultListPosition + 20, r.burstTime * 14, 60);
-                e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 14), resultListPosition + 20, r.burstTime * 14, 60);
-                e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 14), resultListPosition + 90);
-                e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 14), resultListPosition + 110);
+                e.Graphics.DrawString("P" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 5), resultListPosition);
+                e.Graphics.FillRectangle(brushBack, startPosition + (r.startP * 5), resultListPosition + 20, r.burstTime * 5, 60);
+                e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 5), resultListPosition + 20, r.burstTime * 5, 60);
+                e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 5), resultListPosition + 90);
+                e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 5), resultListPosition + 110);
                 waitingTime += (double)r.waitingTime;
 
             }
@@ -139,7 +153,6 @@ namespace VisualizationScheduling
                 FCFS_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
                 FCFS_Chart2.Series[0]["DounutRadius"] = "40";
         }
-
         public void chart1_Load(object sender, EventArgs e)
         {
             FCFC_Chart.Series.Clear();
