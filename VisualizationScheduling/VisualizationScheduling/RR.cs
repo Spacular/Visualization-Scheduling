@@ -7,30 +7,12 @@ using System.Windows.Forms.Design;
 
 namespace VisualizationScheduling
 {
-    public class RRQueue
-    {
-        public int processID;
-        public int burstTime;
-        public int waitingTime;
-        public int priorty;
-
-        public RRQueue(int processID, int burstTime, int waitingTime, int asame, int priorty)
-        {
-            this.processID = processID;
-            this.burstTime = burstTime;
-            this.waitingTime = waitingTime;
-            this.priorty = priorty;
-        }
-        
-    }
-
     public class RR
     {
-        public static List<Result> Run(List<Process> jobList, List<Result> resultList)
+        public static List<Result_double> Run(List<Process> jobList, List<Result_double> resultList, int a)
         {
             int count = 0;
-            int time = 5;
-            List<RRQueue> readyQueue = new List<RRQueue>();
+            int time = a;
             Boolean[] flag = new Boolean[jobList.Count];
             for (int i = 0; i < jobList.Count; i++)
             {
@@ -43,7 +25,7 @@ namespace VisualizationScheduling
                         if (jobList.ElementAt(i).BurstTime >= time)
                         {
                             jobList.ElementAt(i).BurstTime = jobList.ElementAt(i).BurstTime - time;
-                            resultList.Add(new Result(jobList.ElementAt(i).ProcessID, 0, time, 0, jobList.ElementAt(i).Priority));
+                            resultList.Add(new Result_double(jobList.ElementAt(i).ProcessID, 0, time, 0, jobList.ElementAt(i).Priority));
                         }
                         else
                         {
@@ -54,7 +36,7 @@ namespace VisualizationScheduling
                             }
                             else
                             {
-                                resultList.Add(new Result(jobList.ElementAt(i).ProcessID, 0, jobList.ElementAt(i).BurstTime, 0, jobList.ElementAt(i).Priority));
+                                resultList.Add(new Result_double(jobList.ElementAt(i).ProcessID, 0, jobList.ElementAt(i).BurstTime, 0, jobList.ElementAt(i).Priority));
                                 jobList.ElementAt(i).BurstTime = 0;
                                 flag[i] = false;
                             }

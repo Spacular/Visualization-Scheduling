@@ -62,6 +62,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -70,8 +72,6 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -319,11 +319,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(158, 36);
+            this.label4.Location = new System.Drawing.Point(111, 37);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 15);
+            this.label4.Size = new System.Drawing.Size(141, 15);
             this.label4.TabIndex = 10;
-            this.label4.Text = "TimeQuantum";
+            this.label4.Text = "TimeQuantum입력 : ";
             // 
             // panel1
             // 
@@ -339,6 +339,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(546, 197);
             this.panel1.TabIndex = 11;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(268, 75);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(123, 61);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "OPEN";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(139, 75);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 61);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "RUN";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -423,26 +443,6 @@
             // processBindingSource
             // 
             this.processBindingSource.DataSource = typeof(VisualizationScheduling.Process);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(139, 75);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 61);
-            this.button5.TabIndex = 14;
-            this.button5.Text = "RUN";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(268, 75);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(123, 61);
-            this.button6.TabIndex = 15;
-            this.button6.Text = "OPEN";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // Visualization_Scheduling
             // 

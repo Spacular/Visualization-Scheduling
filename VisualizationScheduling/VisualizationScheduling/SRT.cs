@@ -25,7 +25,6 @@ namespace VisualizationScheduling
         public static List<Result> Run(List<Process> jobList, List<Result> resultList)
         {
             int runTime = 0;
-            int i;
 
             List<ReadyQueueElement> readyQueue = new List<ReadyQueueElement>();
 

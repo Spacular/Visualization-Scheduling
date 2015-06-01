@@ -15,13 +15,13 @@ namespace VisualizationScheduling
     public partial class Form1 : Form
     {
         public List<Process> oList, pView;
-        public List<Result> rr;
+        public List<Result_double> rr;
         public Visualization_Scheduling main = new Visualization_Scheduling();
         int j = 0;
         int k = 0;
         public Boolean flag = false;
         string[] strvalue;
-        int[] value;
+        double[] value;
         Boolean[] Schedul = new Boolean[5];
         enum Calor { Red = 1, Yellow = 2, Blue = 3 };
 
@@ -33,8 +33,10 @@ namespace VisualizationScheduling
         {
             InitializeComponent();
             int count = 0;
-            rr = new List<Result>();
+            rr = new List<Result_double>();
             main = _form;
+            int time = main.TimeQuntam;
+            int runtime = 0;
             oList = new List<Process>();
             for (int i = 0; i < main.pList.Count; i++)
                 {
@@ -42,8 +44,9 @@ namespace VisualizationScheduling
                     oList.Add(p);
                 }
             strvalue = new string[oList.Count];
-            value = new int[oList.Count];
-            rr = RR.Run(oList, rr); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
+            value = new double[oList.Count];
+            bool[] flag = new bool[oList.Count];
+            rr = RR.Run(oList, rr,time); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
             for (int i = 0; i < rr.Count; i++)
             {
                 for (j = i + 1; j < rr.Count; j++)
@@ -67,7 +70,7 @@ namespace VisualizationScheduling
                         }
                         else
                         {
-                            rr.ElementAt(i).waitingTime = rr.ElementAt(i).waitingTime + rr.ElementAt(j).burstTime;
+                            rr.ElementAt(i).waitingTime = rr.ElementAt(i).waitingTime + rr.ElementAt(j).burstTime + 0.1;
                         }
                     }
                     else
@@ -91,6 +94,7 @@ namespace VisualizationScheduling
                     }
                 }
             }
+
             count = rr.Count;
             int k = oList.Count;
             for (j = k; j < count; j++)
@@ -103,7 +107,7 @@ namespace VisualizationScheduling
             double watingTime = 0.0;
             double busrtime = 0;
             j = 0;
-            foreach (Result r in rr)
+            foreach (Result_double r in rr)
             {
                 row[0] = r.processID.ToString();
                 row[1] = r.burstTime.ToString();
@@ -116,8 +120,9 @@ namespace VisualizationScheduling
                 dataGridView1.Rows.Add(row);
                 j++;
             }
-            RR_label.Text = "전체 실행시간: " + busrtime.ToString();
+            RR_label.Text = "RR전체 실행시간: " + busrtime.ToString();
             RR_label2.Text = "평균 대기시간: " + (watingTime / rr.Count).ToString();
         }
+
     }
 }

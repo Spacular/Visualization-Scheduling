@@ -56,6 +56,7 @@
     <Compile Include="Process.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result_double.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="RR.cs" />
     <Compile Include="SJF.cs" />

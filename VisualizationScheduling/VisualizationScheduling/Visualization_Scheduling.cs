@@ -17,7 +17,7 @@ namespace VisualizationScheduling
         public List<Process> pList, pView;
         public List<Result> resultList;
         string[] StrData;
-        public int TimeQuntam = 5;
+        public int TimeQuntam = 16;
         public string path;
         public int a;
         public Boolean[] Schedul = new Boolean[5];
@@ -87,7 +87,6 @@ namespace VisualizationScheduling
             {
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
-            textBox1.Text = path;
             
         }
 
@@ -195,12 +194,10 @@ namespace VisualizationScheduling
             }
             if (Schedul[3])
             {
+                TimeQuntam = int.Parse(textBox1.Text);
                 Form1 frm2 = new Form1(this);
                 frm2.Show();
             }
-
-            //TimeQuntam = Convert.ToInt32(textBox1.Text);
-            //TimeQuntam = int.Parse(textBox1.Text);
         }
 
         private void runToolStripMenuItem1_Click(object sender, EventArgs e) //Run버튼
