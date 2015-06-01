@@ -69,10 +69,6 @@
             this.SJF_Chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.SJF_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.ID_SJF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SJF_label2 = new System.Windows.Forms.Label();
             this.SJF_label = new System.Windows.Forms.Label();
             this.SJF_panel = new System.Windows.Forms.Panel();
@@ -96,6 +92,10 @@
             this.Priorty_label2 = new System.Windows.Forms.Label();
             this.Priorty_label = new System.Windows.Forms.Label();
             this.Priorty_panel = new System.Windows.Forms.Panel();
+            this.ID_SJF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FCFC_Chart)).BeginInit();
@@ -131,6 +131,7 @@
             // 
             this.FCFS_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.FCFS_panel.AutoScroll = true;
+            this.FCFS_panel.AutoScrollMinSize = new System.Drawing.Size(603, 164);
             this.FCFS_panel.BackColor = System.Drawing.Color.White;
             this.FCFS_panel.Location = new System.Drawing.Point(1174, 29);
             this.FCFS_panel.Name = "FCFS_panel";
@@ -240,6 +241,7 @@
             this.FCFS_Chart2.Series.Add(series2);
             this.FCFS_Chart2.Size = new System.Drawing.Size(345, 248);
             this.FCFS_Chart2.TabIndex = 11;
+            this.FCFS_Chart2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FCFS_Chart2_MouseClick);
             // 
             // printDialog1
             // 
@@ -302,22 +304,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(471, 248);
             this.dataGridView2.TabIndex = 16;
             // 
-            // ID_SJF
-            // 
-            this.ID_SJF.Name = "ID_SJF";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
             // SJF_label2
             // 
             this.SJF_label2.AutoSize = true;
@@ -342,6 +328,7 @@
             // 
             this.SJF_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.SJF_panel.AutoScroll = true;
+            this.SJF_panel.AutoScrollMinSize = new System.Drawing.Size(603, 164);
             this.SJF_panel.BackColor = System.Drawing.Color.White;
             this.SJF_panel.Location = new System.Drawing.Point(1174, 285);
             this.SJF_panel.Name = "SJF_panel";
@@ -445,6 +432,7 @@
             // 
             this.SRT_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.SRT_panel.AutoScroll = true;
+            this.SRT_panel.AutoScrollMinSize = new System.Drawing.Size(603, 164);
             this.SRT_panel.BackColor = System.Drawing.Color.White;
             this.SRT_panel.Location = new System.Drawing.Point(1174, 539);
             this.SRT_panel.Name = "SRT_panel";
@@ -548,11 +536,32 @@
             // 
             this.Priorty_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
             this.Priorty_panel.AutoScroll = true;
+            this.Priorty_panel.AutoScrollMinSize = new System.Drawing.Size(603, 164);
             this.Priorty_panel.BackColor = System.Drawing.Color.White;
             this.Priorty_panel.Location = new System.Drawing.Point(1174, 790);
             this.Priorty_panel.Name = "Priorty_panel";
             this.Priorty_panel.Size = new System.Drawing.Size(603, 164);
             this.Priorty_panel.TabIndex = 25;
+            // 
+            // ID_SJF
+            // 
+            this.ID_SJF.HeaderText = "ID_SJF";
+            this.ID_SJF.Name = "ID_SJF";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "BurstTime";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // Sub_From
             // 
@@ -591,6 +600,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Sub_From";
             this.Text = "Sub_From";
+            this.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.FCFS_MouseWheel);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -634,9 +644,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart SJF_Chart;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.Label SJF_label2;
         private System.Windows.Forms.Label SJF_label;
         private System.Windows.Forms.Panel SJF_panel;
@@ -661,10 +668,13 @@
         private System.Windows.Forms.Label Priorty_label;
         private System.Windows.Forms.Panel Priorty_panel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_FCFS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_SJF;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_SRT;
         private System.Windows.Forms.DataGridViewTextBoxColumn WaitingTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Priorty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_SJF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
 
 
     }

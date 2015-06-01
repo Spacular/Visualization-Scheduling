@@ -92,7 +92,7 @@ namespace VisualizationScheduling
                             }
                         }
                         ReadyQueueElement3 rq = ReadyQueue.ElementAt(first);    // 레디큐의 제일 첫 작업을 rq에 넣어준다.
-                        ResultList.Add(new Result(rq.PID, runTime, rq.BurstTime, rq.WaitingTime + rq.asame));   // 처리한 결과를 ResultList에 넣어준다.
+                        ResultList.Add(new Result(rq.PID, runTime, rq.BurstTime, rq.WaitingTime + rq.asame,rq.PID));   // 처리한 결과를 ResultList에 넣어준다.
                         cpuDone = rq.BurstTime;             // 이 작업의 소요작업시간을 cpuDone에다가 집어넣는다
                         cpuTime = 0;                        // 이 작업이 cpu가 얼마만큼 실행했는지 나타낸다.
                         currentProcess = rq.PID;            // 현재 몇 번 프로세스가 실행되고 있는지 나타낸다.

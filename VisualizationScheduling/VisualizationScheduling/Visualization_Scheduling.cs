@@ -17,7 +17,7 @@ namespace VisualizationScheduling
         public List<Process> pList, pView;
         public List<Result> resultList;
         string[] StrData;
-        public double TimeQuntam;
+        public int TimeQuntam = 5;
         public string path;
         public int a;
         public Boolean[] Schedul = new Boolean[5];
@@ -185,15 +185,16 @@ namespace VisualizationScheduling
             if (Schedul[0] == true || Schedul[1] == true || Schedul[2] == true || Schedul[4] == true)
             {
                 Sub_From frm = new Sub_From(this);
-                frm.ShowDialog();
+                frm.Show();
             }
             if (Schedul[3])
             {
-                RR_Form frm2 = new RR_Form(this);
-                frm2.ShowDialog();
+                Form1 frm2 = new Form1(this);
+                frm2.Show();
             }
-            TimeQuntam = Convert.ToDouble(textBox1.Text);
-            TimeQuntam = double.Parse(textBox1.Text);
+
+            //TimeQuntam = Convert.ToInt32(textBox1.Text);
+            //TimeQuntam = int.Parse(textBox1.Text);
         }
 
         private void runToolStripMenuItem1_Click(object sender, EventArgs e) //Run버튼

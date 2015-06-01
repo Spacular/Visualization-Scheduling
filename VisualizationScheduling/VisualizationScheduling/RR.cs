@@ -28,36 +28,58 @@ namespace VisualizationScheduling
     {
         public static List<Result> Run(List<Process> jobList, List<Result> resultList)
         {
-            int currentProcess = 0;
-            int cpuTime = 0;
-            int cpuDone = 0;
-            int runTime = 0;
-            Visualization_Scheduling main = new Visualization_Scheduling();
+            int count = 0;
+            int time = 5;
             List<RRQueue> readyQueue = new List<RRQueue>();
-            while (jobList.Count != 0)
-            { 
-                for (int i = 0; i < jobList.Count; i++)
+            Boolean[] flag = new Boolean[jobList.Count];
+            for (int i = 0; i < jobList.Count; i++)
+            {
+                flag[i] = true;
+            }
+                while (true)
                 {
-                    if (jobList.ElementAt(i).BurstTime >= (int)main.TimeQuntam)
+                    for (int i = 0; i < jobList.Count; i++)
                     {
-                        jobList.ElementAt(i).BurstTime = jobList.ElementAt(i).BurstTime - (int)main.TimeQuntam;
-                        runTime = (int)main.TimeQuntam;
-                        if (i == 0)
+                        if (jobList.ElementAt(i).BurstTime >= time)
                         {
-
+                            jobList.ElementAt(i).BurstTime = jobList.ElementAt(i).BurstTime - time;
+                            resultList.Add(new Result(jobList.ElementAt(i).ProcessID, 0, time, 0, jobList.ElementAt(i).Priority));
                         }
                         else
                         {
-
+                            if (jobList.ElementAt(i).BurstTime == 0)
+                            {
+                                flag[i] = false;
+                                continue;
+                            }
+                            else
+                            {
+                                resultList.Add(new Result(jobList.ElementAt(i).ProcessID, 0, jobList.ElementAt(i).BurstTime, 0, jobList.ElementAt(i).Priority));
+                                jobList.ElementAt(i).BurstTime = 0;
+                                flag[i] = false;
+                            }
                         }
-                    }   
+                    }
+                    for (int j = 0; j < jobList.Count; j++)
+                    {
+                        if (flag[j] == false)
+                        {
+                            count++;
+                        }
+                    }
+                    if (count == jobList.Count)
+                    {
+                        break;
+                    }
                     else
                     {
+                        count = 0;
+                    }
 
-                    } 
                 }
-            }
+
                 return resultList;
+               
         }
     }
 }
