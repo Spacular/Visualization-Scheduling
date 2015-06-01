@@ -19,8 +19,8 @@ namespace VisualizationScheduling
         int j = 0;
         public static int preY;
         public Boolean flag = false;
-        string[] strvalue = new string[100];
-        int[] value = new int[100];
+        string[] strvalue;
+        int[] value;
         Boolean[] Schedul = new Boolean[5];
         enum Calor { Red = 1, Yellow = 2, Blue = 3 };
         
@@ -39,6 +39,7 @@ namespace VisualizationScheduling
             srt = new List<Result>();
             sjf = new List<Result>();
             main = _form;
+
             //변수 정의
             if (main.Schedul[0] == true)//fCFS
             {
@@ -47,22 +48,26 @@ namespace VisualizationScheduling
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
                     oList.Add(p);
                 }
+                strvalue = new string[oList.Count];
+                value = new int[oList.Count];
                 fcfs = FCFS.Run(oList, fcfs); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
                 dataGridView1.Rows.Clear();
-                string[] row = { "", "", "",""};
+                string[] row = new string[4];
                 double watingTime = 0.0;
+                j = 0;
                 foreach (Result r in fcfs)
                 {
                     row[0] = r.processID.ToString();
                     row[1] = r.burstTime.ToString();
                     row[2] = r.waitingTime.ToString();
                     row[3] = r.Priority.ToString();
-                    strvalue[j] = row[0];
-                    value[j] = Convert.ToInt32(row[2]);
+                    strvalue[j] = r.processID.ToString();
+                    value[j] = r.waitingTime;
                     watingTime += r.waitingTime;
                     dataGridView1.Rows.Add(row);
                     j++;
-                }                
+                }
+                j = 0;
             }
             if (main.Schedul[1] == true)//SRT
             {
@@ -74,19 +79,21 @@ namespace VisualizationScheduling
                 
                 srt = SRT.Run(oList, srt); //SRT클래스의 Run메소드 호출 //SRT는 Result클래스로 이루어진 리스트
                 string[] srow = { "", "", "", "" };
-                double watingTime = 0.0;
+                double watingTime = 0.0; int[] value2 = new int[oList.Count];
+                string[] strvalue2 = new string[oList.Count];
                 foreach (Result e in srt)
                 {
                     srow[0] = e.processID.ToString();
                     srow[1] = e.burstTime.ToString();
                     srow[2] = e.waitingTime.ToString();
                     srow[3] = e.Priority.ToString();
-                    strvalue[j] = srow[0];
-                    value[j] = Convert.ToInt32(srow[2]);
+                    strvalue2[j] = srow[0];
+                    value2[j] = e.waitingTime;
                     watingTime += e.waitingTime;
                     dataGridView2.Rows.Add(srow);
                     j++;
                 }
+                j = 0;
                 
             }
             if (main.Schedul[2] == true)//SJF
@@ -98,32 +105,28 @@ namespace VisualizationScheduling
                 }
                 sjf = SJF.Run(oList, sjf); //SRT클래스의 Run메소드 호출 //SRT는 Result클래스로 이루어진 리스트
                 string[] srow = { "", "", "", "" };
+                string[] strvalue3 = new string[oList.Count];
+                int[] value3 = new int[oList.Count];
                 double watingTime = 0.0;
-                foreach (Result e in sjf)
+                foreach (Result sjff in sjf)
                 {
-                    srow[0] = e.processID.ToString();
-                    srow[1] = e.burstTime.ToString();
-                    srow[2] = e.waitingTime.ToString();
-                    srow[3] = e.Priority.ToString();
-                    strvalue[j] = srow[0];
-                    value[j] = Convert.ToInt32(srow[2]);
-                    watingTime += e.waitingTime;
+                    srow[0] = sjff.processID.ToString();
+                    srow[1] = sjff.burstTime.ToString();
+                    srow[2] = sjff.waitingTime.ToString();
+                    srow[3] = sjff.Priority.ToString();
+                    watingTime += sjff.waitingTime;
+                    value[j] = sjff.waitingTime;
                     dataGridView3.Rows.Add(srow);
                     j++;
                 }
+                j = 0;
+                SJF_label.Text = "전체 실행시간: " + (sjf[fcfs.Count - 1].startP + sjf[fcfs.Count - 1].burstTime).ToString();
+                SJF_label2.Text = "평균 대기시간: " + (watingTime / sjf.Count).ToString();
             }
             if (main.Schedul[4] == true)//Priorty
             {
 
             }
-          /*  chart1.ChartAreas["Area"].CursorX.IsUserSelectionEnabled = true;
-            chart1.ChartAreas["Area"].CursorY.IsUserSelectionEnabled = true;
-            chart1.ChartAreas["Area"].CursorX.IsUserEnabled = true;
-            chart1.ChartAreas["Area"].CursorY.IsUserEnabled = true;
-            chart1.ChartAreas["Area"].AxisX.ScaleView.Zoomable = true;
-            chart1.ChartAreas["Area"].AxisX.ScrollBar.IsPositionedInside = true;
-            chart1.ChartAreas["Area"].AxisY.ScaleView.Zoomable = true;
-            chart1.ChartAreas["Area"].AxisY.ScrollBar.IsPositionedInside = true; */
         }
         private void saveToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -156,9 +159,7 @@ namespace VisualizationScheduling
             byte[] colorBytes = new byte[3];
             rand.NextBytes(colorBytes);
             Color randomColor = Color.FromArgb(colorBytes[0], colorBytes[1], colorBytes[2]);
-            
             SolidBrush brushBack = new SolidBrush(randomColor);
-            
             int resultListPosition = 0;
             
             foreach (Result r in fcfs)
@@ -178,6 +179,7 @@ namespace VisualizationScheduling
             chart1_Load(sender, e);
             main.Schedul[0] = false;
         }
+
         public void Page_Load(object sender, EventArgs e)
         {
                 for (int i = 0; i < j; i++)
@@ -205,21 +207,6 @@ namespace VisualizationScheduling
                 FCFC_Chart.Series.Add(se);
             }
         }
-        private void FCFS_MouseWheel(object sender, System.Windows.Forms.MouseEventArgs e)
-        {
-            if (e.Delta < 0)
-            {
-                //휠을 아래로 돌렸을 때.
-                FCFS_panel.AutoScrollPosition = new Point(0, preY + 200);
-                preY += 200;
-            }
-            else
-            {
-                FCFS_panel.AutoScrollPosition = new Point(0, preY - 200);
-                preY -= 200;
-            }
-        }
-
         private void FCFS_Chart2_MouseClick(object sender, MouseEventArgs e)
         {
             try

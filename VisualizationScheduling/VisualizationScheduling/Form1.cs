@@ -20,8 +20,8 @@ namespace VisualizationScheduling
         int j = 0;
         int k = 0;
         public Boolean flag = false;
-        string[] strvalue = new string[100];
-        int[] value = new int[100];
+        string[] strvalue;
+        int[] value;
         Boolean[] Schedul = new Boolean[5];
         enum Calor { Red = 1, Yellow = 2, Blue = 3 };
 
@@ -35,7 +35,14 @@ namespace VisualizationScheduling
             int count = 0;
             rr = new List<Result>();
             main = _form;
-            oList = main.pList;
+            oList = new List<Process>();
+            for (int i = 0; i < main.pList.Count; i++)
+                {
+                    Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
+                    oList.Add(p);
+                }
+            strvalue = new string[oList.Count];
+            value = new int[oList.Count];
             rr = RR.Run(oList, rr); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
             for (int i = 0; i < rr.Count; i++)
             {
@@ -74,8 +81,6 @@ namespace VisualizationScheduling
                 }
 
             }
-
-
             for (int i = 0; i < rr.Count; i++)
             {
                 for (j = i + 1; j < rr.Count; j++)
@@ -94,8 +99,10 @@ namespace VisualizationScheduling
             }
 
             dataGridView1.Rows.Clear();
-            string[] row = { "", "", "", "" };
+            string[] row = new string[4];
             double watingTime = 0.0;
+            double busrtime = 0;
+            j = 0;
             foreach (Result r in rr)
             {
                 row[0] = r.processID.ToString();
@@ -103,11 +110,14 @@ namespace VisualizationScheduling
                 row[2] = r.waitingTime.ToString();
                 row[3] = r.Priority.ToString();
                 strvalue[j] = row[0];
-                value[j] = Convert.ToInt32(row[2]);
+                value[j] = r.waitingTime;
+                busrtime += r.burstTime;
                 watingTime += r.waitingTime;
                 dataGridView1.Rows.Add(row);
                 j++;
             }
+            RR_label.Text = "전체 실행시간: " + busrtime.ToString();
+            RR_label2.Text = "평균 대기시간: " + (watingTime / rr.Count).ToString();
         }
     }
 }

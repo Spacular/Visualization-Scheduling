@@ -33,8 +33,8 @@
             this.BurstTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Priorty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FCFS_label2 = new System.Windows.Forms.Label();
-            this.FCFS_label = new System.Windows.Forms.Label();
+            this.RR_label2 = new System.Windows.Forms.Label();
+            this.RR_label = new System.Windows.Forms.Label();
             this.RR_panel = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -72,23 +72,23 @@
             // 
             // FCFS_label2
             // 
-            this.FCFS_label2.AutoSize = true;
-            this.FCFS_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FCFS_label2.Location = new System.Drawing.Point(25, 492);
-            this.FCFS_label2.Name = "RR_label2";
-            this.FCFS_label2.Size = new System.Drawing.Size(159, 20);
-            this.FCFS_label2.TabIndex = 8;
-            this.FCFS_label2.Text = "평균대기시간 : ";
+            this.RR_label2.AutoSize = true;
+            this.RR_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.RR_label2.Location = new System.Drawing.Point(25, 492);
+            this.RR_label2.Name = "RR_label2";
+            this.RR_label2.Size = new System.Drawing.Size(159, 20);
+            this.RR_label2.TabIndex = 8;
+            this.RR_label2.Text = "평균대기시간 : ";
             // 
             // FCFS_label
             // 
-            this.FCFS_label.AutoSize = true;
-            this.FCFS_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FCFS_label.Location = new System.Drawing.Point(25, 453);
-            this.FCFS_label.Name = "RR_label";
-            this.FCFS_label.Size = new System.Drawing.Size(138, 20);
-            this.FCFS_label.TabIndex = 7;
-            this.FCFS_label.Text = "출력데이터 : ";
+            this.RR_label.AutoSize = true;
+            this.RR_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.RR_label.Location = new System.Drawing.Point(25, 453);
+            this.RR_label.Name = "RR_label";
+            this.RR_label.Size = new System.Drawing.Size(138, 20);
+            this.RR_label.TabIndex = 7;
+            this.RR_label.Text = "출력데이터 : ";
             // 
             // RR_panel
             // 
@@ -106,8 +106,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 565);
-            this.Controls.Add(this.FCFS_label2);
-            this.Controls.Add(this.FCFS_label);
+            this.Controls.Add(this.RR_label2);
+            this.Controls.Add(this.RR_label);
             this.Controls.Add(this.RR_panel);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Form1";
@@ -125,8 +125,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn BurstTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn WatingTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Priorty;
-        private System.Windows.Forms.Label FCFS_label2;
-        private System.Windows.Forms.Label FCFS_label;
+        private System.Windows.Forms.Label RR_label2;
+        private System.Windows.Forms.Label RR_label;
         private System.Windows.Forms.Panel RR_panel;
     }
 }

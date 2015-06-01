@@ -70,6 +70,8 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.processBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -326,6 +328,8 @@
             // panel1
             // 
             this.panel1.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.panel1.Controls.Add(this.button6);
+            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -420,6 +424,26 @@
             // 
             this.processBindingSource.DataSource = typeof(VisualizationScheduling.Process);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(139, 75);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 61);
+            this.button5.TabIndex = 14;
+            this.button5.Text = "RUN";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(268, 75);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(123, 61);
+            this.button6.TabIndex = 15;
+            this.button6.Text = "OPEN";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Visualization_Scheduling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -496,6 +520,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button5;
 
     }
 }

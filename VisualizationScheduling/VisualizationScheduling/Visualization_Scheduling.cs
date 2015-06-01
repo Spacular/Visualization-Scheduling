@@ -21,6 +21,7 @@ namespace VisualizationScheduling
         public string path;
         public int a;
         public Boolean[] Schedul = new Boolean[5];
+        public bool none = true;
         
         
         public Visualization_Scheduling()
@@ -187,6 +188,11 @@ namespace VisualizationScheduling
                 Sub_From frm = new Sub_From(this);
                 frm.Show();
             }
+            if (none)
+            {
+                MessageBox.Show("체크된 것이 없습니다. 체크해 주세요.");
+                return;
+            }
             if (Schedul[3])
             {
                 Form1 frm2 = new Form1(this);
@@ -338,12 +344,12 @@ namespace VisualizationScheduling
         }
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) // 체크리스트에서 선택된것만 (미완)
         {
-
                 for (int i = 0; i <= (checkedListBox1.Items.Count - 1); i++)
                 {
                     if (checkedListBox1.GetItemChecked(i) == true)
                     {
                         Schedul[i] = true;
+                        none = false;
                     }
                 }
                 for (int i = 0; i <= (checkedListBox1.Items.Count - 1); i++)
@@ -397,6 +403,16 @@ namespace VisualizationScheduling
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            runToolStripMenuItem_Click(sender, e);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            openToolStripMenuItem_Click(sender, e);
         }
     }
 }
