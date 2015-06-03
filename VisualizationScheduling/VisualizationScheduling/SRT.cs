@@ -7,17 +7,21 @@ using System.Windows.Forms;
 
 namespace VisualizationScheduling
 {
-    public class ReadyQueueElement2
+    public class SRT_ReadyQueueElement
     {
         public int processID;
+        public int startP;
         public int burstTime;
         public int waitingTime;
+        public int Priority;
 
-        public ReadyQueueElement2(int processID, int burstTime, int waitingTime)
+        public SRT_ReadyQueueElement(int processID, int startP, int burstTime, int waitingTime, int Priority)
         {
             this.processID = processID;
+            this.startP = startP;
             this.burstTime = burstTime;
             this.waitingTime = waitingTime;
+            this.Priority = Priority;
         }
     }
     class SRT //Shortest Joob First
@@ -26,38 +30,53 @@ namespace VisualizationScheduling
         {
             int runTime = 0;
 
-            List<ReadyQueueElement> readyQueue = new List<ReadyQueueElement>();
+            List<SRT_ReadyQueueElement> readyQueue = new List<SRT_ReadyQueueElement>();
 
             do
             {
-                if (jobList.Count != 0)
+                while (jobList.Count != 0)
                 {
                     Process frontJob = jobList.ElementAt(0);
 
                     if (frontJob.ArriveTime == runTime)
                     {
-                        readyQueue.Add(new ReadyQueueElement(frontJob.ProcessID, frontJob.BurstTime, 0, 0, frontJob.Priority));
+                        readyQueue.Add(new SRT_ReadyQueueElement(frontJob.ProcessID, runTime, frontJob.BurstTime, 0, frontJob.Priority));
                         jobList.RemoveAt(0);
 
-                        readyQueue.Sort(delegate(ReadyQueueElement rqe1, ReadyQueueElement rqe2)
+                        readyQueue.Sort(delegate(SRT_ReadyQueueElement rqe1, SRT_ReadyQueueElement rqe2)
                         {
                             return rqe1.burstTime.CompareTo(rqe2.burstTime);
                         });
                     }
+                    else
+                        break;
                 }
 
 
-                resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).priorty));
+                for (int i = 1; i < readyQueue.Count; i++)
+                {
+                    readyQueue.ElementAt(i).waitingTime++;
+                }
 
-                if (readyQueue.ElementAt(0).burstTime == 1)
+
+                if (readyQueue.ElementAt(0).processID == resultList.ElementAt(resultList.Count - 1).processID)
+                {
+                    resultList.ElementAt(resultList.Count - 1).burstTime++;
+                }
+                else
+                    resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));
+
+
+
+                if (readyQueue.ElementAt(0).burstTime <= 1)
                     readyQueue.RemoveAt(0);
                 else
                 {
-                    ReadyQueueElement rq = readyQueue.ElementAt(0);
+                    SRT_ReadyQueueElement rq = readyQueue.ElementAt(0);
                     readyQueue.RemoveAt(0);
-                    readyQueue.Add(new ReadyQueueElement(rq.processID, rq.burstTime - 1, rq.waitingTime, rq.asame, rq.priorty));
+                    readyQueue.Add(new SRT_ReadyQueueElement(rq.processID, runTime, rq.burstTime - 1, rq.waitingTime, rq.Priority));
 
-                    readyQueue.Sort(delegate(ReadyQueueElement rqe1, ReadyQueueElement rqe2)
+                    readyQueue.Sort(delegate(SRT_ReadyQueueElement rqe1, SRT_ReadyQueueElement rqe2)
                     {
                         return rqe1.burstTime.CompareTo(rqe2.burstTime);
                     });

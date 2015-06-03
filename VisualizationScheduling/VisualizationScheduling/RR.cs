@@ -3,65 +3,87 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
-
 namespace VisualizationScheduling
 {
+    public class rr_quere
+    {
+        public int processID;
+        public int burstTime;
+        public int waitingTime;
+        public int priorty;
+        public int asame;
+
+        public rr_quere(int processID, int burstTime, int waitingTime, int asame, int priorty)
+        {
+            this.processID = processID;
+            this.burstTime = burstTime;
+            this.waitingTime = waitingTime;
+            this.asame = asame;
+            this.priorty = priorty;
+        }
+    }
+
     public class RR
     {
         public static List<Result_double> Run(List<Process> jobList, List<Result_double> resultList, int a)
         {
-            int count = 0;
-            int time = a;
-            Boolean[] flag = new Boolean[jobList.Count];
-            for (int i = 0; i < jobList.Count; i++)
+            int timequntam = a;
+            int exetime = 0;
+            int runTime = 0;
+            if (jobList.ElementAt(0).ArriveTime > runTime)
             {
-                flag[i] = true;
+                runTime = jobList.ElementAt(0).ArriveTime;
             }
-                while (true)
+
+            List<rr_quere> readyQueue = new List<rr_quere>();
+            do
+            {
+                while (jobList.Count != 0)
                 {
-                    for (int i = 0; i < jobList.Count; i++)
+                    Process frontJob = jobList.ElementAt(0);
+                    if (frontJob.ArriveTime == runTime)
                     {
-                        if (jobList.ElementAt(i).BurstTime >= time)
-                        {
-                            jobList.ElementAt(i).BurstTime = jobList.ElementAt(i).BurstTime - time;
-                            resultList.Add(new Result_double(jobList.ElementAt(i).ProcessID, 0, time, 0, jobList.ElementAt(i).Priority));
-                        }
-                        else
-                        {
-                            if (jobList.ElementAt(i).BurstTime == 0)
-                            {
-                                flag[i] = false;
-                                continue;
-                            }
-                            else
-                            {
-                                resultList.Add(new Result_double(jobList.ElementAt(i).ProcessID, 0, jobList.ElementAt(i).BurstTime, 0, jobList.ElementAt(i).Priority));
-                                jobList.ElementAt(i).BurstTime = 0;
-                                flag[i] = false;
-                            }
-                        }
+                        readyQueue.Add(new rr_quere(frontJob.ProcessID, frontJob.BurstTime, 0, frontJob.same, frontJob.Priority));
+                        jobList.RemoveAt(0);
                     }
-                    for (int j = 0; j < jobList.Count; j++)
+                    else if (frontJob.ArriveTime <= runTime)
                     {
-                        if (flag[j] == false)
-                        {
-                            count++;
-                        }
+                        readyQueue.Add(new rr_quere(frontJob.ProcessID, frontJob.BurstTime, runTime - frontJob.ArriveTime, frontJob.same, frontJob.Priority));
+                        jobList.RemoveAt(0);
                     }
-                    if (count == jobList.Count)
-                    {
+                    else 
                         break;
+                }
+           
+                if (readyQueue.Count != 0)
+                {
+                    if (readyQueue.ElementAt(0).burstTime >= timequntam)
+                    {
+                        readyQueue.ElementAt(0).burstTime -= timequntam;
+                        exetime = timequntam;
                     }
                     else
                     {
-                        count = 0;
+                        exetime = readyQueue.ElementAt(0).burstTime;
+                        readyQueue.ElementAt(0).burstTime = 0;
                     }
-
+                    resultList.Add(new Result_double(readyQueue.ElementAt(0).processID, runTime, exetime, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).priorty,0));
+                    if (readyQueue.ElementAt(0).burstTime != 0)
+                    {
+                        readyQueue.Add(new rr_quere(readyQueue.ElementAt(0).processID, readyQueue.ElementAt(0).burstTime, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).asame, readyQueue.ElementAt(0).priorty));
+                       
+                    }
+                    readyQueue.RemoveAt(0);
+                }
+                runTime = runTime + exetime;
+                for (int i = 0; i < readyQueue.Count - 1; i++)
+                {
+                    readyQueue.ElementAt(i).waitingTime += exetime;
                 }
 
-                return resultList;
-               
+            } while (jobList.Count != 0 || readyQueue.Count != 0);
+
+            return resultList;
         }
     }
 }
