@@ -63,19 +63,19 @@ namespace VisualizationScheduling
             }
             context_Swich = 0.1 * rr.Count - 1;
 
-            for (int i = 0; i < rr.Count; i++)
-            {
-                if (flag[rr.ElementAt(i).processID - 1] == false)
-                {
-                    Result_double p = new Result_double(rr.ElementAt(i).processID, rr.ElementAt(i).startP, rr.ElementAt(i).burstTime, rr.ElementAt(i).waitingTime, rr.ElementAt(i).Priority, rr.ElementAt(i).same);
-                    rr_dataview.Add(p);
-                    flag[rr.ElementAt(i).processID - 1] = true;
-                }
-                else
-                {
-                    continue;
-                }
-            }
+            //for (int i = 0; i < rr.Count; i++)
+            //{
+            //    if (flag[rr.ElementAt(i).processID - 1] == false)
+            //    {
+            //        Result_double p = new Result_double(rr.ElementAt(i).processID, rr.ElementAt(i).startP, rr.ElementAt(i).burstTime, rr.ElementAt(i).waitingTime, rr.ElementAt(i).Priority, rr.ElementAt(i).same);
+            //        rr_dataview.Add(p);
+            //        flag[rr.ElementAt(i).processID - 1] = true;
+            //    }
+            //    else
+            //    {
+            //        continue;
+            //    }
+            //}
         }
         private void panel1_Paint_1(object sender, PaintEventArgs e)
         {

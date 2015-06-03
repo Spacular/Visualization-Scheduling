@@ -20,7 +20,7 @@ namespace VisualizationScheduling
         public int TimeQuntam = 16;
         public string path;
         public int a;
-        public Boolean[] Schedul = new Boolean[5];
+        public Boolean[] Schedul = new Boolean[6];
         public bool none = true;
         
         

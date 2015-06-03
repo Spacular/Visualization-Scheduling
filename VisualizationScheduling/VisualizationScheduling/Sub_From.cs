@@ -44,7 +44,7 @@ namespace VisualizationScheduling
                 for (int i = 0; i < main.pList.Count; i++)
                 {
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
-                    oList.Add(p);
+                    oList.Add(p);  
                 }
                 strvalue = new string[oList.Count];
                 value = new int[oList.Count];

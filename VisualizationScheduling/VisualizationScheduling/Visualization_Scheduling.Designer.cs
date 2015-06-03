@@ -362,7 +362,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 75);
+            this.button4.Location = new System.Drawing.Point(12, 76);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(123, 61);
             this.button4.TabIndex = 4;
@@ -422,7 +422,8 @@
             "SRT",
             "SJF",
             "RR",
-            "Priorty"});
+            "Priority(선점)",
+            "Priority(비선점)"});
             this.checkedListBox1.Location = new System.Drawing.Point(16, 463);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.ScrollAlwaysVisible = true;
