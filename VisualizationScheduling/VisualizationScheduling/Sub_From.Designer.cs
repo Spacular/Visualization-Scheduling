@@ -52,6 +52,18 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea9 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend9 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea10 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend10 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series10 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series11 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ID_FCFS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BurstTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,7 +86,6 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SJF_label2 = new System.Windows.Forms.Label();
             this.SJF_label = new System.Windows.Forms.Label();
-            this.SJF_panel = new System.Windows.Forms.Panel();
             this.SRT_Chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.SRT_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
@@ -96,6 +107,28 @@
             this.Priorty_label = new System.Windows.Forms.Label();
             this.Priorty_panel = new System.Windows.Forms.Panel();
             this.FCFS_panel = new System.Windows.Forms.Panel();
+            this.Priorty2_Chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Priorty2_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Priorty2_label2 = new System.Windows.Forms.Label();
+            this.Priorty2_label = new System.Windows.Forms.Label();
+            this.Priorty2_panel = new System.Windows.Forms.Panel();
+            this.rr_chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.rr_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rr_label2 = new System.Windows.Forms.Label();
+            this.rr_label = new System.Windows.Forms.Label();
+            this.rr_panel = new System.Windows.Forms.Panel();
+            this.SJF_panel = new System.Windows.Forms.Panel();
+            this.rr_label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FCFC_Chart)).BeginInit();
@@ -109,6 +142,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Priorty_Chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Priorty_Chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Priorty2_Chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Priorty2_Chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rr_chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rr_chart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             this.SuspendLayout();
             // 
             // ID_FCFS
@@ -131,7 +170,7 @@
             // 
             this.FCFS_label.AutoSize = true;
             this.FCFS_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FCFS_label.Location = new System.Drawing.Point(1187, 216);
+            this.FCFS_label.Location = new System.Drawing.Point(1187, 210);
             this.FCFS_label.Name = "FCFS_label";
             this.FCFS_label.Size = new System.Drawing.Size(138, 20);
             this.FCFS_label.TabIndex = 1;
@@ -141,7 +180,7 @@
             // 
             this.FCFS_label2.AutoSize = true;
             this.FCFS_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FCFS_label2.Location = new System.Drawing.Point(1187, 255);
+            this.FCFS_label2.Location = new System.Drawing.Point(1187, 248);
             this.FCFS_label2.Name = "FCFS_label2";
             this.FCFS_label2.Size = new System.Drawing.Size(159, 20);
             this.FCFS_label2.TabIndex = 2;
@@ -315,7 +354,7 @@
             // 
             this.SJF_label2.AutoSize = true;
             this.SJF_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.SJF_label2.Location = new System.Drawing.Point(1193, 760);
+            this.SJF_label2.Location = new System.Drawing.Point(1193, 755);
             this.SJF_label2.Name = "SJF_label2";
             this.SJF_label2.Size = new System.Drawing.Size(159, 20);
             this.SJF_label2.TabIndex = 15;
@@ -325,24 +364,11 @@
             // 
             this.SJF_label.AutoSize = true;
             this.SJF_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.SJF_label.Location = new System.Drawing.Point(1193, 721);
+            this.SJF_label.Location = new System.Drawing.Point(1193, 715);
             this.SJF_label.Name = "SJF_label";
-            this.SJF_label.Size = new System.Drawing.Size(138, 20);
+            this.SJF_label.Size = new System.Drawing.Size(117, 20);
             this.SJF_label.TabIndex = 14;
-            this.SJF_label.Text = "출력데이터 : ";
-            // 
-            // SJF_panel
-            // 
-            this.SJF_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.SJF_panel.AutoScroll = true;
-            this.SJF_panel.AutoScrollMinSize = new System.Drawing.Size(605, 165);
-            this.SJF_panel.BackColor = System.Drawing.Color.White;
-            this.SJF_panel.Location = new System.Drawing.Point(1180, 536);
-            this.SJF_panel.Name = "SJF_panel";
-            this.SJF_panel.Size = new System.Drawing.Size(603, 164);
-            this.SJF_panel.TabIndex = 13;
-            this.SJF_panel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SJF_panel_Scroll);
-            this.SJF_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.SJF_label.Text = "실행시간 : ";
             // 
             // SRT_Chart2
             // 
@@ -425,7 +451,7 @@
             // 
             this.SRT_label2.AutoSize = true;
             this.SRT_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.SRT_label2.Location = new System.Drawing.Point(1193, 509);
+            this.SRT_label2.Location = new System.Drawing.Point(1193, 503);
             this.SRT_label2.Name = "SRT_label2";
             this.SRT_label2.Size = new System.Drawing.Size(159, 20);
             this.SRT_label2.TabIndex = 21;
@@ -435,11 +461,11 @@
             // 
             this.SRT_label.AutoSize = true;
             this.SRT_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.SRT_label.Location = new System.Drawing.Point(1193, 470);
+            this.SRT_label.Location = new System.Drawing.Point(1193, 468);
             this.SRT_label.Name = "SRT_label";
-            this.SRT_label.Size = new System.Drawing.Size(138, 20);
+            this.SRT_label.Size = new System.Drawing.Size(117, 20);
             this.SRT_label.TabIndex = 20;
-            this.SRT_label.Text = "출력데이터 : ";
+            this.SRT_label.Text = "실행시간 : ";
             // 
             // SRT_panel
             // 
@@ -535,7 +561,7 @@
             // 
             this.Priorty_label2.AutoSize = true;
             this.Priorty_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Priorty_label2.Location = new System.Drawing.Point(1187, 1014);
+            this.Priorty_label2.Location = new System.Drawing.Point(1187, 1009);
             this.Priorty_label2.Name = "Priorty_label2";
             this.Priorty_label2.Size = new System.Drawing.Size(159, 20);
             this.Priorty_label2.TabIndex = 27;
@@ -545,11 +571,11 @@
             // 
             this.Priorty_label.AutoSize = true;
             this.Priorty_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Priorty_label.Location = new System.Drawing.Point(1187, 975);
+            this.Priorty_label.Location = new System.Drawing.Point(1187, 971);
             this.Priorty_label.Name = "Priorty_label";
-            this.Priorty_label.Size = new System.Drawing.Size(138, 20);
+            this.Priorty_label.Size = new System.Drawing.Size(125, 20);
             this.Priorty_label.TabIndex = 26;
-            this.Priorty_label.Text = "출력데이터 : ";
+            this.Priorty_label.Text = "실행시간  : ";
             // 
             // Priorty_panel
             // 
@@ -575,6 +601,247 @@
             this.FCFS_panel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.FCFS_panel_Scroll);
             this.FCFS_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // Priorty2_Chart2
+            // 
+            chartArea9.Name = "ChartArea1";
+            this.Priorty2_Chart2.ChartAreas.Add(chartArea9);
+            this.Priorty2_Chart2.Cursor = System.Windows.Forms.Cursors.Cross;
+            legend9.Name = "Legend1";
+            this.Priorty2_Chart2.Legends.Add(legend9);
+            this.Priorty2_Chart2.Location = new System.Drawing.Point(829, 1021);
+            this.Priorty2_Chart2.Name = "Priorty2_Chart2";
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series9.IsValueShownAsLabel = true;
+            series9.Legend = "Legend1";
+            series9.Name = "Series1";
+            series9.YValuesPerPoint = 2;
+            this.Priorty2_Chart2.Series.Add(series9);
+            this.Priorty2_Chart2.Size = new System.Drawing.Size(345, 248);
+            this.Priorty2_Chart2.TabIndex = 36;
+            // 
+            // Priorty2_Chart
+            // 
+            chartArea10.Name = "ChartArea1";
+            this.Priorty2_Chart.ChartAreas.Add(chartArea10);
+            this.Priorty2_Chart.Cursor = System.Windows.Forms.Cursors.Cross;
+            legend10.Name = "Legend1";
+            this.Priorty2_Chart.Legends.Add(legend10);
+            this.Priorty2_Chart.Location = new System.Drawing.Point(484, 1021);
+            this.Priorty2_Chart.Name = "Priorty2_Chart";
+            this.Priorty2_Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series10.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.Unscaled;
+            series10.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series10.BorderWidth = 2;
+            series10.ChartArea = "ChartArea1";
+            series10.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            series10.IsValueShownAsLabel = true;
+            series10.Legend = "Legend1";
+            series10.Name = "Series1";
+            series10.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            this.Priorty2_Chart.Series.Add(series10);
+            this.Priorty2_Chart.Size = new System.Drawing.Size(345, 248);
+            this.Priorty2_Chart.TabIndex = 35;
+            // 
+            // dataGridView5
+            // 
+            this.dataGridView5.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15,
+            this.dataGridViewTextBoxColumn16});
+            this.dataGridView5.Location = new System.Drawing.Point(13, 1018);
+            this.dataGridView5.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.Size = new System.Drawing.Size(471, 248);
+            this.dataGridView5.TabIndex = 34;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "ID_Priorty";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "BurstTime";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "WaitingTime";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "Priorty";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // Priorty2_label2
+            // 
+            this.Priorty2_label2.AutoSize = true;
+            this.Priorty2_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Priorty2_label2.Location = new System.Drawing.Point(1187, 1252);
+            this.Priorty2_label2.Name = "Priorty2_label2";
+            this.Priorty2_label2.Size = new System.Drawing.Size(159, 20);
+            this.Priorty2_label2.TabIndex = 33;
+            this.Priorty2_label2.Text = "평균대기시간 : ";
+            // 
+            // Priorty2_label
+            // 
+            this.Priorty2_label.AutoSize = true;
+            this.Priorty2_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Priorty2_label.Location = new System.Drawing.Point(1187, 1217);
+            this.Priorty2_label.Name = "Priorty2_label";
+            this.Priorty2_label.Size = new System.Drawing.Size(117, 20);
+            this.Priorty2_label.TabIndex = 32;
+            this.Priorty2_label.Text = "실행시간 : ";
+            // 
+            // Priorty2_panel
+            // 
+            this.Priorty2_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.Priorty2_panel.AutoScroll = true;
+            this.Priorty2_panel.AutoScrollMinSize = new System.Drawing.Size(605, 165);
+            this.Priorty2_panel.BackColor = System.Drawing.Color.White;
+            this.Priorty2_panel.Location = new System.Drawing.Point(1174, 1037);
+            this.Priorty2_panel.Name = "Priorty2_panel";
+            this.Priorty2_panel.Size = new System.Drawing.Size(603, 164);
+            this.Priorty2_panel.TabIndex = 31;
+            // 
+            // rr_chart2
+            // 
+            chartArea11.Name = "ChartArea1";
+            this.rr_chart2.ChartAreas.Add(chartArea11);
+            this.rr_chart2.Cursor = System.Windows.Forms.Cursors.Cross;
+            legend11.Name = "Legend1";
+            this.rr_chart2.Legends.Add(legend11);
+            this.rr_chart2.Location = new System.Drawing.Point(829, 1268);
+            this.rr_chart2.Name = "rr_chart2";
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series11.IsValueShownAsLabel = true;
+            series11.Legend = "Legend1";
+            series11.Name = "Series1";
+            series11.YValuesPerPoint = 2;
+            this.rr_chart2.Series.Add(series11);
+            this.rr_chart2.Size = new System.Drawing.Size(345, 248);
+            this.rr_chart2.TabIndex = 42;
+            // 
+            // rr_chart
+            // 
+            chartArea12.Name = "ChartArea1";
+            this.rr_chart.ChartAreas.Add(chartArea12);
+            this.rr_chart.Cursor = System.Windows.Forms.Cursors.Cross;
+            legend12.Name = "Legend1";
+            this.rr_chart.Legends.Add(legend12);
+            this.rr_chart.Location = new System.Drawing.Point(484, 1268);
+            this.rr_chart.Name = "rr_chart";
+            this.rr_chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            series12.BackImageWrapMode = System.Windows.Forms.DataVisualization.Charting.ChartImageWrapMode.Unscaled;
+            series12.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.NotSet;
+            series12.BorderWidth = 2;
+            series12.ChartArea = "ChartArea1";
+            series12.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            series12.IsValueShownAsLabel = true;
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            series12.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
+            this.rr_chart.Series.Add(series12);
+            this.rr_chart.Size = new System.Drawing.Size(345, 248);
+            this.rr_chart.TabIndex = 41;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.dataGridViewTextBoxColumn19,
+            this.dataGridViewTextBoxColumn20});
+            this.dataGridView6.Location = new System.Drawing.Point(13, 1265);
+            this.dataGridView6.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.Size = new System.Drawing.Size(471, 248);
+            this.dataGridView6.TabIndex = 40;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "ID_RR";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.HeaderText = "BurstTime";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.HeaderText = "WaitingTime";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.HeaderText = "Priorty";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            // 
+            // rr_label2
+            // 
+            this.rr_label2.AutoSize = true;
+            this.rr_label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rr_label2.Location = new System.Drawing.Point(1187, 1508);
+            this.rr_label2.Name = "rr_label2";
+            this.rr_label2.Size = new System.Drawing.Size(159, 20);
+            this.rr_label2.TabIndex = 39;
+            this.rr_label2.Text = "평균대기시간 : ";
+            // 
+            // rr_label
+            // 
+            this.rr_label.AutoSize = true;
+            this.rr_label.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rr_label.Location = new System.Drawing.Point(1187, 1469);
+            this.rr_label.Name = "rr_label";
+            this.rr_label.Size = new System.Drawing.Size(117, 20);
+            this.rr_label.TabIndex = 38;
+            this.rr_label.Text = "실행시간 : ";
+            // 
+            // rr_panel
+            // 
+            this.rr_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.rr_panel.AutoScroll = true;
+            this.rr_panel.AutoScrollMinSize = new System.Drawing.Size(605, 165);
+            this.rr_panel.BackColor = System.Drawing.Color.White;
+            this.rr_panel.Location = new System.Drawing.Point(1174, 1284);
+            this.rr_panel.Name = "rr_panel";
+            this.rr_panel.Size = new System.Drawing.Size(603, 164);
+            this.rr_panel.TabIndex = 37;
+            this.rr_panel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel1_Scroll);
+            this.rr_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
+            // 
+            // SJF_panel
+            // 
+            this.SJF_panel.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
+            this.SJF_panel.AutoScroll = true;
+            this.SJF_panel.AutoScrollMinSize = new System.Drawing.Size(603, 165);
+            this.SJF_panel.BackColor = System.Drawing.Color.White;
+            this.SJF_panel.Location = new System.Drawing.Point(1180, 532);
+            this.SJF_panel.Name = "SJF_panel";
+            this.SJF_panel.Size = new System.Drawing.Size(603, 164);
+            this.SJF_panel.TabIndex = 20;
+            this.SJF_panel.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SJF_panel_Scroll_1);
+            this.SJF_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.SJF_panel_Paint_1);
+            // 
+            // rr_label3
+            // 
+            this.rr_label3.AutoSize = true;
+            this.rr_label3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.rr_label3.Location = new System.Drawing.Point(1187, 1544);
+            this.rr_label3.Name = "rr_label3";
+            this.rr_label3.Size = new System.Drawing.Size(153, 20);
+            this.rr_label3.TabIndex = 43;
+            this.rr_label3.Text = "TimeQuantam :";
+            // 
             // Sub_From
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -583,6 +850,20 @@
             this.AutoScrollMinSize = new System.Drawing.Size(1860, 2000);
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1842, 1045);
+            this.Controls.Add(this.rr_label3);
+            this.Controls.Add(this.SJF_panel);
+            this.Controls.Add(this.rr_chart2);
+            this.Controls.Add(this.rr_chart);
+            this.Controls.Add(this.dataGridView6);
+            this.Controls.Add(this.rr_label2);
+            this.Controls.Add(this.rr_label);
+            this.Controls.Add(this.rr_panel);
+            this.Controls.Add(this.Priorty2_Chart2);
+            this.Controls.Add(this.Priorty2_Chart);
+            this.Controls.Add(this.dataGridView5);
+            this.Controls.Add(this.Priorty2_label2);
+            this.Controls.Add(this.Priorty2_label);
+            this.Controls.Add(this.Priorty2_panel);
             this.Controls.Add(this.SRT_Chart2);
             this.Controls.Add(this.Priorty_Chart2);
             this.Controls.Add(this.Priorty_Chart);
@@ -600,7 +881,6 @@
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.SJF_label2);
             this.Controls.Add(this.SJF_label);
-            this.Controls.Add(this.SJF_panel);
             this.Controls.Add(this.FCFS_Chart2);
             this.Controls.Add(this.FCFC_Chart);
             this.Controls.Add(this.dataGridView1);
@@ -628,6 +908,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Priorty_Chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Priorty_Chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Priorty2_Chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Priorty2_Chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rr_chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rr_chart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,22 +941,17 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart SJF_Chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart SJF_Chart;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label SJF_label2;
         private System.Windows.Forms.Label SJF_label;
-        private System.Windows.Forms.Panel SJF_panel;
         private System.Windows.Forms.DataVisualization.Charting.Chart SRT_Chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart SRT_Chart;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.Label SRT_label2;
         private System.Windows.Forms.Label SRT_label;
         private System.Windows.Forms.Panel SRT_panel;
         private System.Windows.Forms.DataVisualization.Charting.Chart Priorty_Chart2;
         private System.Windows.Forms.DataVisualization.Charting.Chart Priorty_Chart;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.Label Priorty_label2;
         private System.Windows.Forms.Label Priorty_label;
         private System.Windows.Forms.Panel Priorty_panel;
@@ -688,6 +969,28 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WaitingTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.Panel FCFS_panel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Priorty2_Chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart Priorty2_Chart;
+        private System.Windows.Forms.DataGridView dataGridView5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.Label Priorty2_label2;
+        private System.Windows.Forms.Label Priorty2_label;
+        private System.Windows.Forms.Panel Priorty2_panel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart rr_chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart rr_chart;
+        private System.Windows.Forms.DataGridView dataGridView6;
+        private System.Windows.Forms.Label rr_label2;
+        private System.Windows.Forms.Label rr_label;
+        private System.Windows.Forms.Panel rr_panel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.Panel SJF_panel;
+        private System.Windows.Forms.Label rr_label3;
 
 
 

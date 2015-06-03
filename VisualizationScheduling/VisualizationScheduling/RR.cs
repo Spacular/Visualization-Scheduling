@@ -38,7 +38,7 @@ namespace VisualizationScheduling
             List<rr_quere> readyQueue = new List<rr_quere>();
             do
             {
-                while (jobList.Count != 0)
+                while (jobList.Count != 0)// 수정요망
                 {
                     Process frontJob = jobList.ElementAt(0);
                     if (frontJob.ArriveTime == runTime)

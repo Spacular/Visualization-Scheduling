@@ -58,15 +58,19 @@ namespace VisualizationScheduling
                     readyQueue.ElementAt(i).waitingTime++;
                 }
 
-
-                if (readyQueue.ElementAt(0).processID == resultList.ElementAt(resultList.Count - 1).processID)
+                if (resultList.Count > 0)
                 {
-                    resultList.ElementAt(resultList.Count - 1).burstTime++;
+                    if (readyQueue.ElementAt(0).processID == resultList.ElementAt(resultList.Count - 1).processID)
+                    {
+                        resultList.ElementAt(resultList.Count - 1).burstTime++;
+                    }
+                    else
+                        resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));
                 }
                 else
-                    resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));
-
-
+                {
+                    resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));      
+                }
 
                 if (readyQueue.ElementAt(0).burstTime <= 1)
                     readyQueue.RemoveAt(0);

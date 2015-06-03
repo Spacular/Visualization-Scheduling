@@ -28,7 +28,7 @@ namespace VisualizationScheduling
         public static List<Result> Run(List<Process> JobList, List<Result> ResultList)
         {
             // JobList는 oList로 넘겨받은 인자, ResultList는 반환해 줄 Result 배열
-            
+
             int currentProcess = 0;     // 현재 탑재된 PID
             int cpuTime = 0;
             int cpuDone = 0;
@@ -38,8 +38,9 @@ namespace VisualizationScheduling
 
             List<ReadyQueueElement3> ReadyQueue = new List<ReadyQueueElement3>();               // 받은 프로세스별 내용을 분류할 리스트 배열.
             List<ReadyQueueElement3> SelectQueue = new List<ReadyQueueElement3>();
-            
-            do{
+
+            do
+            {
                 if (JobList.Count != 0)         // 할 작업이 아직 남아있다면
                 {
                     SelectQueue.RemoveRange(0, SelectQueue.Count);   // 선별 큐 비우고
@@ -54,7 +55,7 @@ namespace VisualizationScheduling
                         }
                     }
 
-                    if(SelectQueue.Count != 0)                                  // 선별된 놈들이 있다면!
+                    if (SelectQueue.Count != 0)                                  // 선별된 놈들이 있다면!
                     {
                         while (SelectQueue.Count > 0)
                         {
@@ -90,13 +91,29 @@ namespace VisualizationScheduling
                                 min = ReadyQueue.ElementAt(i).BurstTime;
                                 first = i;
                             }
+                            else if (ReadyQueue.ElementAt(i).BurstTime == min)
+                            {
+                                if (ReadyQueue.ElementAt(i).PID < ReadyQueue.ElementAt(first).PID)
+                                {
+                                    min = ReadyQueue.ElementAt(i).BurstTime;
+                                    first = i;
+                                }
+                            }
                         }
-                        ReadyQueueElement3 rq = ReadyQueue.ElementAt(first);    // 레디큐의 제일 첫 작업을 rq에 넣어준다.
-                        ResultList.Add(new Result(rq.PID, runTime, rq.BurstTime, rq.WaitingTime + rq.asame,rq.PID));   // 처리한 결과를 ResultList에 넣어준다.
-                        cpuDone = rq.BurstTime;             // 이 작업의 소요작업시간을 cpuDone에다가 집어넣는다
-                        cpuTime = 0;                        // 이 작업이 cpu가 얼마만큼 실행했는지 나타낸다.
-                        currentProcess = rq.PID;            // 현재 몇 번 프로세스가 실행되고 있는지 나타낸다.
-                        ReadyQueue.RemoveAt(first);             // 레디큐에서 이제 빠져나갔으므로 지워준다!
+                        if (ReadyQueue.ElementAt(first).BurstTime != 0)
+                        {
+                            ReadyQueueElement3 rq = ReadyQueue.ElementAt(first);    // 레디큐의 제일 첫 작업을 rq에 넣어준다.
+                            ResultList.Add(new Result(rq.PID, runTime, rq.BurstTime, rq.WaitingTime, 0));   // 처리한 결과를 ResultList에 넣어준다.
+                            cpuDone = rq.BurstTime;             // 이 작업의 소요작업시간을 cpuDone에다가 집어넣는다
+                            cpuTime = 0;                        // 이 작업이 cpu가 얼마만큼 실행했는지 나타낸다.
+                            currentProcess = rq.PID;            // 현재 몇 번 프로세스가 실행되고 있는지 나타낸다.
+                            ReadyQueue.RemoveAt(first);             // 레디큐에서 이제 빠져나갔으므로 지워준다!
+                        }
+                        else
+                        {
+                            ReadyQueue.RemoveAt(first);
+                            continue;
+                        }
                     }
                 }
 
@@ -108,7 +125,8 @@ namespace VisualizationScheduling
                         continue;
                     }
                 }
-                cpuTime++;
+                if (currentProcess != 0)
+                    cpuTime++;
                 runTime++;
                 for (int i = 0; i < ReadyQueue.Count; i++)
                 {

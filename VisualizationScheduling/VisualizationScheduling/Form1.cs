@@ -22,7 +22,6 @@ namespace VisualizationScheduling
         public Boolean flag = false;
         string[] strvalue;
         double[] value;
-        enum Calor { Red = 1, Yellow = 2, Blue = 3 };
 
         public Form1()
         {
@@ -34,7 +33,6 @@ namespace VisualizationScheduling
             rr = new List<Result_double>();
             rr_dataview = new List<Result_double>();
             main = _form;
-            double context_Swich;
             int time = main.TimeQuntam;
             oList = new List<Process>();
             for (int i = 0; i < main.pList.Count; i++)
@@ -61,7 +59,6 @@ namespace VisualizationScheduling
                     }
                 }
             }
-            context_Swich = 0.1 * rr.Count - 1;
 
             //for (int i = 0; i < rr.Count; i++)
             //{

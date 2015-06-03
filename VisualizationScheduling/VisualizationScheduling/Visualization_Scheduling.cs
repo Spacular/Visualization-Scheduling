@@ -17,7 +17,7 @@ namespace VisualizationScheduling
         public List<Process> pList, pView;
         public List<Result> resultList;
         string[] StrData;
-        public int TimeQuntam = 16;
+        public int TimeQuntam = 5;
         public string path;
         public int a;
         public Boolean[] Schedul = new Boolean[6];
@@ -27,21 +27,14 @@ namespace VisualizationScheduling
         public Visualization_Scheduling()
         {
             InitializeComponent();
+
         }
         public void Main_From_Load(object sender, EventArgs e)
         {
             pList = new List<Process>();
             pView = new List<Process>();
-            // 리스트 뷰 관련 : http://blog.naver.com/ehdrua0305/130183774413
-            //리스트 박스 내용을 Txt파일로 저장 : http://kindtis.tistory.com/168
-            //새 문서 생성 : http://kin.naver.com/qna/detail.nhn?d1id=1&dirId=1040102&docId=68218792&qb=QyMg66mU64m0IO2BtOumrQ==&enc=utf8&section=kin&rank=1&search_sort=0&spq=1&pid=SSy1GspySoCssv%2BHndossssssts-099782&sid=q38TllHh1OYueU0Rz63cJQ%3D%3D
-        }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-           
         }
-
         private string SelectFilePath()
         {
             openFileDialog1.Filter = "텍스트파일|*.txt";
@@ -55,12 +48,8 @@ namespace VisualizationScheduling
             Visualization_Scheduling vi = new Visualization_Scheduling();
             vi.Show();
         }
-
         private void openToolStripMenuItem_Click(object sender, EventArgs e) //Open
         {
-            pView.Clear();
-            pList.Clear();
-
             path = SelectFilePath();
             if (path == null) return;
             StrData = File.ReadAllLines(path);
@@ -121,25 +110,6 @@ namespace VisualizationScheduling
             {
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
-            /*
-            foreach (DataGridViewRow rows in dataGridView1.Rows)
-            {
-                foreach (DataGridViewColumn cols in dataGridView1.Columns)
-                {
-                    //row.Cells[col.Index].Style.BackColor = Color.Green; //doesn't work
-                    //col.Cells[row.Index].Style.BackColor = Color.Green; //doesn't work
-                    //dataGridView1[cols.Index, rows.Index].Style.BackColor = Color.Violet; //doesn't work
-                    dataGridView1[cols.Index,rows.Index].Style.ForeColor = Color.Violet;
-                }
-            } *//*
-            foreach (DataGridViewRow rows in dataGridView1.Rows)
-            {
-                foreach (DataGridViewColumn cols in dataGridView1.Columns)
-                {
-                    if(String.Compare(cols.Index.ToString(), rows.Index.ToString(), true) == 0)
-                        dataGridView1[0, rows.Index].Style.ForeColor = Color.Red;
-                }
-            } */
 
             //arriveTime으로 정렬
         }
@@ -150,23 +120,16 @@ namespace VisualizationScheduling
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //reference : http://stackoverflow.com/questions/12977924/how-to-properly-exit-a-c-sharp-application
             if (MessageBox.Show("종료하시겠습니까?", "종료창", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (System.Windows.Forms.Application.MessageLoop)
                 {
-                    // WinForms app
                     System.Windows.Forms.Application.Exit();
                 }
                 else
                 {
-                    // Console app
                     System.Environment.Exit(1);
                 }
-            }
-            else
-            {
-
             }
         }
 
@@ -175,28 +138,28 @@ namespace VisualizationScheduling
             MessageBox.Show("Team : 김상욱, 이근열, 이언우\nO/S Term Project(Scheduling)","About");
         }
 
-        private void runToolStripMenuItem_Click(object sender, EventArgs e) //Run버튼//서브폼 호출
+        private void runToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (pList.Count == 0)
+                if (pList.Count == 0)
+                {
+                    MessageBox.Show("Data Nothing", "error");
+                    return;
+                }
+            if (Schedul[0] == true || Schedul[1] == true || Schedul[2] == true || Schedul[4] == true || Schedul[3] == true || Schedul[5] == true)
             {
-                MessageBox.Show("Data Nothing", "error");
-                return;
-            }
-            if (Schedul[0] == true || Schedul[1] == true || Schedul[2] == true || Schedul[4] == true)
-            {
+                if (textBox1.Text == "" && Schedul[3] == true)
+                {
+                    MessageBox.Show("RR_Sechduling을 선택 하였으나, Timequntam을 지정하지 않아 자동으로 '5'의값으로 지정됩니다.");
+                }
                 Sub_From frm = new Sub_From(this);
+                Form1 frm2 = new Form1(this);
+                frm2.Show();
                 frm.Show();
             }
             if (none)
             {
                 MessageBox.Show("체크된 것이 없습니다. 체크해 주세요.");
                 return;
-            }
-            if (Schedul[3])
-            {
-                TimeQuntam = int.Parse(textBox1.Text);
-                Form1 frm2 = new Form1(this);
-                frm2.Show();
             }
         }
 
@@ -224,7 +187,6 @@ namespace VisualizationScheduling
                 random[2] = rm.Next(0, 30);
                 random[3] = rm.Next(1, 10);
                 Process p = new Process(random[0], random[1], random[2], random[3]);
-               // MessageBox.Show("같은 행에 존재하는 나머지 항목들도 값을 입력하세요. 입력하지 않으면 랜덤값으로 생성됩니다.", "Warning");
                 for (int i = 0; i < 4; i++)
                 {
                     if(i != e.ColumnIndex)
@@ -339,7 +301,7 @@ namespace VisualizationScheduling
                 return x.ArriveTime.CompareTo(y.ArriveTime);
             });
         }
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) // 체크리스트에서 선택된것만 (미완)
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e) // 체크리스트에서 선택된것만
         {
                 for (int i = 0; i <= (checkedListBox1.Items.Count - 1); i++)
                 {
@@ -410,6 +372,15 @@ namespace VisualizationScheduling
         private void button6_Click(object sender, EventArgs e)
         {
             openToolStripMenuItem_Click(sender, e);
+        }
+
+        private void Visualization_Scheduling_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("종료하시겠습니까?", "Visualization_Scheduling",MessageBoxButtons.YesNo) == DialogResult.No)
+            {   
+                e.Cancel = true;
+            }
+
         }
     }
 }

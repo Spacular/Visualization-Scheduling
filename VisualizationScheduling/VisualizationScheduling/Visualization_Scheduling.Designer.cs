@@ -289,7 +289,6 @@
             this.runToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(117, 52);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // openToolStripMenuItem1
             // 
@@ -466,6 +465,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Visualization_Scheduling";
             this.Text = "Visualization Scheduling";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Visualization_Scheduling_FormClosing);
             this.Load += new System.EventHandler(this.Main_From_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
