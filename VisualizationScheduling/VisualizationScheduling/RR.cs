@@ -38,7 +38,7 @@ namespace VisualizationScheduling
             List<rr_quere> readyQueue = new List<rr_quere>();
             do
             {
-                while (jobList.Count != 0)// 수정요망
+                while (jobList.Count != 0)
                 {
                     Process frontJob = jobList.ElementAt(0);
                     if (frontJob.ArriveTime == runTime)
@@ -74,8 +74,12 @@ namespace VisualizationScheduling
                        
                     }
                     readyQueue.RemoveAt(0);
+                    runTime = runTime + exetime;
                 }
-                runTime = runTime + exetime;
+                else
+                {
+                    runTime++;
+                }
                 for (int i = 0; i < readyQueue.Count - 1; i++)
                 {
                     readyQueue.ElementAt(i).waitingTime += exetime;

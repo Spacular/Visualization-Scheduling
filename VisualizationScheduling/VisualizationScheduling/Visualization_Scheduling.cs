@@ -152,8 +152,6 @@ namespace VisualizationScheduling
                     MessageBox.Show("RR_Sechduling을 선택 하였으나, Timequntam을 지정하지 않아 자동으로 '5'의값으로 지정됩니다.");
                 }
                 Sub_From frm = new Sub_From(this);
-                Form1 frm2 = new Form1(this);
-                frm2.Show();
                 frm.Show();
             }
             if (none)
@@ -352,16 +350,15 @@ namespace VisualizationScheduling
         }
         private void button4_Click(object sender, EventArgs e)//processID 정렬
         {
+            pList.Sort(delegate(Process x, Process y)
+            {
+                return x.ArriveTime.CompareTo(y.ArriveTime);
+            });
             for (int i = 0; i < pList.Count; i++)
             {
                 pList.ElementAt(i).ProcessID = i+1;
                 dataGridView1.Rows[i].Cells[0].Value = (i+1).ToString();
             }
-            pList.Sort(delegate(Process x, Process y)
-            {
-                return x.ArriveTime.CompareTo(y.ArriveTime);
-            });
-
         }
 
         private void button5_Click(object sender, EventArgs e)

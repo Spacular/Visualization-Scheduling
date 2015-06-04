@@ -59,33 +59,43 @@ namespace VisualizationScheduling
                     readyQueue.ElementAt(i).waitingTime++;
                 }
 
-                if (resultList.Count > 0)
+
+
+                if (readyQueue.Count > 0)
                 {
-                    if (readyQueue.ElementAt(0).processID == resultList.ElementAt(resultList.Count - 1).processID)
+                    if (resultList.Count > 0)
                     {
-                        resultList.ElementAt(resultList.Count - 1).burstTime++;
+                        if (readyQueue.ElementAt(0).processID == resultList.ElementAt((resultList.Count) - 1).processID)
+                        {
+                            resultList.ElementAt(resultList.Count - 1).burstTime++;
+                        }
+                        else
+                            resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));
                     }
                     else
-                        resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));
-                }
-                else
-                {
-                    resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));      
-                }
-
-                if (readyQueue.ElementAt(0).burstTime <= 1)
-                    readyQueue.RemoveAt(0);
-                else
-                {
-                    SRT_ReadyQueueElement rq = readyQueue.ElementAt(0);
-                    readyQueue.RemoveAt(0);
-                    readyQueue.Add(new SRT_ReadyQueueElement(rq.processID, runTime, rq.burstTime - 1, rq.waitingTime, rq.Priority));
-
-                    readyQueue.Sort(delegate(SRT_ReadyQueueElement rqe1, SRT_ReadyQueueElement rqe2)
                     {
-                        return rqe1.burstTime.CompareTo(rqe2.burstTime);
-                    });
+                        resultList.Add(new Result(readyQueue.ElementAt(0).processID, runTime, 1, readyQueue.ElementAt(0).waitingTime, readyQueue.ElementAt(0).Priority));
+                    }
+
+
+
+                    if (readyQueue.ElementAt(0).burstTime <= 1)
+                        readyQueue.RemoveAt(0);
+                    else
+                    {
+                        SRT_ReadyQueueElement rq = readyQueue.ElementAt(0);
+                        readyQueue.RemoveAt(0);
+                        readyQueue.Add(new SRT_ReadyQueueElement(rq.processID, runTime, rq.burstTime - 1, rq.waitingTime, rq.Priority));
+
+                        readyQueue.Sort(delegate(SRT_ReadyQueueElement rqe1, SRT_ReadyQueueElement rqe2)
+                        {
+                            return rqe1.burstTime.CompareTo(rqe2.burstTime);
+                        });
+                    }
                 }
+                
+
+                
 
                 runTime++;
 
