@@ -4,22 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace VisualizationScheduling
 {
-    class Priority
+    class Priority_Preemptive
     {
-       
         public static List<Result> Run(List<Process> jobList, List<Result> resultList)
         {
             int currentProcess = 0;
             int cpuTime = 0;
             int cpuDone = 0;
             int runTime = 0;
-            int min;
+            int min,current=-1;
 
             List<Result> readyQueue = new List<Result>();
-           /* for (int i = 0; i < jobList.Count;) //Sorting
+            /*for (int i = 0; i < jobList.Count; ) //Sorting
             {
                 min = i;
                 for (int j = i + 1; j < jobList.Count; j++)
@@ -38,7 +36,7 @@ namespace VisualizationScheduling
             {
                 if (jobList.Count != 0)
                 {
-                    for (int i = 0; jobList.ElementAt(i).ArriveTime == runTime;i++ )
+                    for (int i = 0; jobList.ElementAt(i).ArriveTime == runTime; i++)
                     {
                         readyQueue.Add(new Result(jobList.ElementAt(i).ProcessID, jobList.ElementAt(i).BurstTime, 0, jobList.ElementAt(i).same, jobList.ElementAt(i).Priority));
                         jobList.RemoveAt(i);
@@ -48,12 +46,21 @@ namespace VisualizationScheduling
                 {
                     if (readyQueue.Count != 0)
                     {
-                        Result rq = readyQueue.ElementAt(0);
-                        resultList.Add(new Result(rq.processID, runTime, rq.waitingTime, rq.burstTime, rq.Priority));
-                        cpuDone = rq.burstTime;
-                        cpuTime = 0;
-                        currentProcess = rq.processID;
-                        readyQueue.RemoveAt(0);
+                        min=0;
+                        for (int i = 1; i < readyQueue.Count; i++)
+                            if (readyQueue.ElementAt(i).Priority <= readyQueue.ElementAt(min).Priority)
+                            {
+                                min = i;
+                            }
+                        if(min != current)
+                        {
+                            if (current != -1)
+                                readyQueue.ElementAt(current).burstTime -= cpuTime;
+                            current = min;
+                            cpuDone = readyQueue.ElementAt(current).burstTime;
+                            cpuTime = 0;
+                            currentProcess = readyQueue.ElementAt(current).processID;
+                        }
                     }
                 }
                 else
@@ -61,6 +68,8 @@ namespace VisualizationScheduling
                     if (cpuTime == cpuDone)
                     {
                         currentProcess = 0;
+                        resultList.Add(new Result(readyQueue.ElementAt(current).processID, runTime, readyQueue.ElementAt(current).waitingTime, readyQueue.ElementAt(current).burstTime, readyQueue.ElementAt(current).Priority));
+                        readyQueue.RemoveAt(current);
                         continue;
                     }
                 }
@@ -76,4 +85,5 @@ namespace VisualizationScheduling
             return resultList;
         }
     }
+
 }
