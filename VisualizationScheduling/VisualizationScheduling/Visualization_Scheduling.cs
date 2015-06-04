@@ -151,6 +151,10 @@ namespace VisualizationScheduling
                 {
                     MessageBox.Show("RR_Sechduling을 선택 하였으나, Timequntam을 지정하지 않아 자동으로 '5'의값으로 지정됩니다.");
                 }
+                else if (textBox1.Text != "" && Schedul[3] == true)
+                {
+                    TimeQuntam = Convert.ToInt32(textBox1.Text.ToString());
+                }
                 Sub_From frm = new Sub_From(this);
                 frm.Show();
             }
@@ -293,6 +297,11 @@ namespace VisualizationScheduling
                 row[2] = p.BurstTime.ToString();
                 row[3] = p.Priority.ToString();
                 dataGridView1.Rows.Add(row);
+            }
+            for (int i = 0; i < pList.Count; i++)
+            {
+                pList.ElementAt(i).ProcessID = i + 1;
+                dataGridView1.Rows[i].Cells[0].Value = (i + 1).ToString();
             }
             pList.Sort(delegate(Process x, Process y)
             {

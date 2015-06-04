@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace VisualizationScheduling
 {
     class Priority
@@ -25,37 +24,35 @@ namespace VisualizationScheduling
             {
                 if (jobList.Count != 0)
                 {
-                    if (jobList.ElementAt(0).ArriveTime == runTime)
+                    if (jobList.ElementAt(0).ArriveTime == runTime) //Runtime 이 도착시간과 같을때
                     {
                         SameValue = 1;
-                        for (int i = 1; i<jobList.Count; i++,SameValue++)
+                        for (int i = 1; i < jobList.Count; i++, SameValue++)    //jobList의 모든 Element와 비교
                         {
-                            if (jobList.ElementAt(0).ArriveTime != jobList.ElementAt(i).ArriveTime)
+                            if (jobList.ElementAt(0).ArriveTime != jobList.ElementAt(i).ArriveTime) //만약 현재 Element ArriveTime이 runtime과 다를 때 break;
                                 break;
-                           
                         }
-                        for (int i = 0; i < SameValue; SameValue--)
+                        for (int i = 0; i < SameValue; i++) //같은 ArriveTime을 가진 Process로 우선순위 비교
                         {
-                            min = 0;
-                            for(int j = 1; j < SameValue;j++)
-                                if (jobList.ElementAt(min).Priority > jobList.ElementAt(j).Priority)
-                                    min = j;
-                            readyQueue.Add(new Result(jobList.ElementAt(min).ProcessID, 0,jobList.ElementAt(min).BurstTime, 0, jobList.ElementAt(min).Priority));
-                            jobList.RemoveAt(min);
+                            readyQueue.Add(new Result(jobList.ElementAt(0).ProcessID, 0, jobList.ElementAt(0).BurstTime, 0, jobList.ElementAt(0).Priority));
+                            jobList.RemoveAt(0);
                         }
                     }
-                
                 }
                 if (currentProcess == 0)
                 {
                     if (readyQueue.Count != 0)
                     {
-                        Result rq = readyQueue.ElementAt(0);
-                        resultList.Add(new Result(rq.processID, runTime, rq.burstTime, rq.waitingTime, rq.Priority));
-                        cpuDone = rq.burstTime;
+                        min = 0;
+                        for (int i = 1; i < readyQueue.Count; i++)
+                            if (readyQueue.ElementAt(min).Priority > readyQueue.ElementAt(i).Priority)//우선순위 결정
+                                min = i;
+                        resultList.Add(new Result(readyQueue.ElementAt(min).processID, runTime,
+                        readyQueue.ElementAt(min).burstTime, readyQueue.ElementAt(min).waitingTime, readyQueue.ElementAt(min).Priority));
+                        cpuDone = readyQueue.ElementAt(min).burstTime;
                         cpuTime = 0;
-                        currentProcess = rq.processID;
-                        readyQueue.RemoveAt(0);
+                        currentProcess = readyQueue.ElementAt(min).processID;
+                        readyQueue.RemoveAt(min);
                     }
                 }
                 else
@@ -72,7 +69,7 @@ namespace VisualizationScheduling
                 {
                     readyQueue.ElementAt(i).waitingTime++;
                 }
-            } while (readyQueue.Count != 0 || currentProcess != 0);
+            } while (jobList.Count != 0 || readyQueue.Count != 0 || currentProcess != 0);
 
             return resultList;
         }

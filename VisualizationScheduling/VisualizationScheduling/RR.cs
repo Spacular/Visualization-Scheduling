@@ -9,11 +9,11 @@ namespace VisualizationScheduling
     {
         public int processID;
         public int burstTime;
-        public int waitingTime;
+        public double waitingTime;
         public int priorty;
         public int asame;
 
-        public rr_quere(int processID, int burstTime, int waitingTime, int asame, int priorty)
+        public rr_quere(int processID, int burstTime, double waitingTime, int asame, int priorty)
         {
             this.processID = processID;
             this.burstTime = burstTime;
@@ -83,6 +83,7 @@ namespace VisualizationScheduling
                 for (int i = 0; i < readyQueue.Count - 1; i++)
                 {
                     readyQueue.ElementAt(i).waitingTime += exetime;
+                    readyQueue.ElementAt(i).waitingTime += 0.1;
                 }
 
             } while (jobList.Count != 0 || readyQueue.Count != 0);

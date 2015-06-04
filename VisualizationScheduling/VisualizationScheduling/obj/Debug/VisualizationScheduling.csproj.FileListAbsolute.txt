@@ -79,13 +79,13 @@ C:\Users\eoun\Documents\카카오톡 받은 파일\VisualizationScheduling\Visua
 C:\Users\eoun\Documents\카카오톡 받은 파일\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Sub_From.resources
 C:\Users\eoun\Documents\카카오톡 받은 파일\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Visualization_Scheduling.resources
 C:\Users\eoun\Documents\카카오톡 받은 파일\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csproj.GenerateResource.Cache
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe.config
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.exe
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.pdb
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.pdb
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csprojResolveAssemblyReference.cache
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Properties.Resources.resources
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Sub_From.resources
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Visualization_Scheduling.resources
-C:\Users\Ruyin\Desktop\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csproj.GenerateResource.Cache
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe.config
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.exe
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.pdb
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.exe
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\bin\Debug\VisualizationScheduling.pdb
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csprojResolveAssemblyReference.cache
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Properties.Resources.resources
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Sub_From.resources
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Visualization_Scheduling.resources
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csproj.GenerateResource.Cache

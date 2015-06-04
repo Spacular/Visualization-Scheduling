@@ -339,10 +339,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(105, 65);
+            this.button6.Location = new System.Drawing.Point(201, 65);
             this.button6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(92, 53);
+            this.button6.Size = new System.Drawing.Size(189, 53);
             this.button6.TabIndex = 15;
             this.button6.Text = "OPEN";
             this.button6.UseVisualStyleBackColor = true;
@@ -353,7 +353,7 @@
             this.button5.Location = new System.Drawing.Point(9, 65);
             this.button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(92, 53);
+            this.button5.Size = new System.Drawing.Size(188, 53);
             this.button5.TabIndex = 14;
             this.button5.Text = "RUN";
             this.button5.UseVisualStyleBackColor = true;
@@ -419,6 +419,7 @@
             "Priority(비선점)"});
             this.checkedListBox1.Location = new System.Drawing.Point(12, 401);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.checkedListBox1.MultiColumn = true;
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.ScrollAlwaysVisible = true;
             this.checkedListBox1.Size = new System.Drawing.Size(411, 98);

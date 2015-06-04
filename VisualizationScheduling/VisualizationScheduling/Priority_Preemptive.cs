@@ -11,79 +11,81 @@ namespace VisualizationScheduling
     {
         public static List<Result> Run(List<Process> jobList)
         {
-            int currentProcess = 0;
+            int currentProcess = -1;
             int cpuTime = 0;
             int cpuDone = 0;
             int runTime = 0;
-            int min,current=-1;
+            int min;
+            int SameValue;
+
             List<Result> resultList = new List<Result>();
             List<Result> readyQueue = new List<Result>();
             do
             {
                 if (jobList.Count != 0)
                 {
-                    if (jobList.ElementAt(0).ArriveTime == runTime)
+                    if (jobList.ElementAt(0).ArriveTime == runTime) //Runtime 이 도착시간과 같을때
                     {
-                        for (int i = 0; i < jobList.Count; i++)
+                        SameValue = 1;
+                        for (int i = 1; i < jobList.Count; i++, SameValue++)    //jobList의 모든 Element와 비교
                         {
-                            if (jobList.ElementAt(0).ArriveTime != jobList.ElementAt(i).ArriveTime)
+                            if (jobList.ElementAt(0).ArriveTime != jobList.ElementAt(i).ArriveTime) //만약 현재 Element ArriveTime이 runtime과 다를 때 break;
                                 break;
-                            readyQueue.Add(new Result(jobList.ElementAt(i).ProcessID, 0, jobList.ElementAt(i).BurstTime, 0, jobList.ElementAt(i).Priority));
-                            jobList.RemoveAt(i);
                         }
-                    }
-                }
-                if (currentProcess == 0)
-                {
-                    if (readyQueue.Count != 0)
-                    {
-                        min=0;
-                        for (int i = 1; i < readyQueue.Count; i++)
-                            if (readyQueue.ElementAt(i).Priority < readyQueue.ElementAt(min).Priority)
-                            {
-                                min = i;
-                            }
-                        if(current == -1)
+                        for (int i = 0; i < SameValue; i++) //같은 ArriveTime을 가진 Process로 우선순위 비교
                         {
-                            current = min;
-                            resultList.Add(new Result(readyQueue.ElementAt(current).processID, runTime, 
-                                readyQueue.ElementAt(current).burstTime, readyQueue.ElementAt(current).waitingTime, readyQueue.ElementAt(current).Priority));
-                            cpuDone = readyQueue.ElementAt(current).burstTime;
-                            cpuTime = 0;
-                            currentProcess = readyQueue.ElementAt(current).processID;
-                        }
-                        if(min != current)
-                        {
-                            readyQueue[current].burstTime -= cpuTime;
-                            resultList.Add(new Result(readyQueue.ElementAt(current).processID, runTime, 
-                                readyQueue.ElementAt(current).burstTime, readyQueue.ElementAt(current).waitingTime, readyQueue.ElementAt(current).Priority));
-                            
-                            current = min;
-                            cpuDone = readyQueue.ElementAt(current).burstTime;
-                            cpuTime = 0;
-                            currentProcess = readyQueue.ElementAt(current).processID;
+                            readyQueue.Add(new Result(jobList.ElementAt(0).ProcessID, 0, jobList.ElementAt(0).BurstTime, 0, jobList.ElementAt(0).Priority));
+                            jobList.RemoveAt(0);
                         }
                     }
                 }
-                else
+                if (readyQueue.Count != 0)
                 {
-                    if (cpuTime == cpuDone)
+                    min = 0;
+                    for (int i = 1; i < readyQueue.Count; i++) //readyQueue의 모든 Element와 비교
+                        if (readyQueue.ElementAt(i).Priority < readyQueue.ElementAt(min).Priority) //현재 우선순위가 기존의 우선순위보다 높을 경우
+                        {
+                            min = i; //변경
+                        }
+                    if (currentProcess == -1) //현재 값이 없을 경우 init
                     {
-                        currentProcess = 0;
-                        resultList.Add(new Result(readyQueue.ElementAt(current).processID, runTime, 
-                            readyQueue.ElementAt(current).burstTime, readyQueue.ElementAt(current).waitingTime, readyQueue.ElementAt(current).Priority));
-                        readyQueue.RemoveAt(current);
-                        continue;
+                        currentProcess = min;
+                        cpuDone = readyQueue.ElementAt(currentProcess).burstTime;
+                        cpuTime = 0;
+                    }
+                    else if (min != currentProcess) //기존과 다른 프로세스의 경우
+                    {
+
+                        readyQueue[currentProcess].burstTime -= cpuTime; //현재 Burst저장
+                        resultList.Add(new Result(readyQueue.ElementAt(currentProcess).processID, runTime,
+                            cpuTime, readyQueue.ElementAt(currentProcess).waitingTime, readyQueue.ElementAt(currentProcess).Priority));
+
+                        currentProcess = min;  //우선순위로 기존 프로세스를 미러냄
+                        cpuDone = readyQueue.ElementAt(currentProcess).burstTime;
+                        cpuTime = 0;
+                    }
+                    else
+                    {
+                        if (cpuTime == cpuDone)//선점한 상태에서 Burst Time이 끝난 경우
+                        {
+                            resultList.Add(new Result(readyQueue.ElementAt(currentProcess).processID, runTime,
+                            readyQueue.ElementAt(currentProcess).burstTime, readyQueue.ElementAt(currentProcess).waitingTime, readyQueue.ElementAt(currentProcess).Priority));
+                            readyQueue.RemoveAt(currentProcess); //Remove
+                            currentProcess = -1;
+                            continue;
+                        }
                     }
                 }
+                
                 cpuTime++;
                 runTime++;
                 for (int i = 0; i < readyQueue.Count; i++)
                 {
-                    readyQueue.ElementAt(i).waitingTime++;
+                    if (i != currentProcess)
+                        readyQueue.ElementAt(i).waitingTime++;
                 }
 
-            } while (readyQueue.Count != 0 || currentProcess != 0);
+            } while (jobList.Count != 0 || readyQueue.Count != 0 || currentProcess != -1);
 
             return resultList;
         }
