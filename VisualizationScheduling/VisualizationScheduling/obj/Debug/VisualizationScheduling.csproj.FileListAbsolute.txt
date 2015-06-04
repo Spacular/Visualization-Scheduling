@@ -57,3 +57,4 @@ C:\Users\eoun\Desktop\VisualizationScheduling (2)\VisualizationScheduling\Visual
 C:\Users\eoun\Desktop\VisualizationScheduling (2)\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Visualization_Scheduling.resources
 C:\Users\eoun\Desktop\VisualizationScheduling (2)\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.csproj.GenerateResource.Cache
 C:\Users\eoun\Desktop\3학년1학기\운영체제\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Form1.resources
+D:\GitHub\Visualization-Scheduling\VisualizationScheduling\VisualizationScheduling\obj\Debug\VisualizationScheduling.Form1.resources

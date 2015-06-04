@@ -49,6 +49,7 @@ namespace VisualizationScheduling
             srt = new List<Result>();
             sjf = new List<Result>();
             rr = new List<Result_double>();
+           
             main = _form;
 
             //변수 정의
@@ -57,11 +58,11 @@ namespace VisualizationScheduling
                 for (int i = 0; i < main.pList.Count; i++)
                 {
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
-                    oList.Add(p);  
+                    oList.Add(p);
                 }
                 strvalue = new string[oList.Count];
                 value = new int[oList.Count];
-                fcfs = FCFS.Run(oList, fcfs); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
+                fcfs = FCFS.Run(oList); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
                 dataGridView1.Rows.Clear();
                 
                 string[] row = new string[4];
@@ -111,7 +112,7 @@ namespace VisualizationScheduling
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
                     oList.Add(p);
                 }
-                srt = SRT.Run(oList, srt); //SRT클래스의 Run메소드 호출 //SRT는 Result클래스로 이루어진 리스트
+                srt = SRT.Run(oList); //SRT클래스의 Run메소드 호출 //SRT는 Result클래스로 이루어진 리스트
                 double watingTime = 0.0; int[] value2 = new int[srt.Count];
                 string[] strvalue2 = new string[srt.Count];
                 string[] srow = { "", "", "", "" };
@@ -178,7 +179,7 @@ namespace VisualizationScheduling
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
                     oList.Add(p);
                 }
-                sjf = SJF.Run(oList, sjf); //SRT클래스의 Run메소드 호출 //SRT는 Result클래스로 이루어진 리스트
+                sjf = SJF.Run(oList); //SRT클래스의 Run메소드 호출 //SRT는 Result클래스로 이루어진 리스트
                 string[] strvalue3 = new string[sjf.Count];
                 int[] value3 = new int[sjf.Count];
                 string[] srow = { "", "", "", "" };
@@ -232,7 +233,7 @@ namespace VisualizationScheduling
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
                     oList.Add(p);
                 }
-                rr = RR.Run(oList, rr, time); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
+                rr = RR.Run(oList, time); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
                 bool[] flag = new bool[oList.Count];
                 strvalue_rr = new string[rr.Count];
                 value_rr = new double[rr.Count];

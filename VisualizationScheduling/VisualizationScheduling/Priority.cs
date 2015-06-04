@@ -10,14 +10,15 @@ namespace VisualizationScheduling
     class Priority
     {
        
-        public static List<Result> Run(List<Process> jobList, List<Result> resultList)
+        public static List<Result> Run(List<Process> jobList)
         {
             int currentProcess = 0;
             int cpuTime = 0;
             int cpuDone = 0;
             int runTime = 0;
-            int min;
+            //int min;
 
+            List<Result> resultList = new List<Result>();
             List<Result> readyQueue = new List<Result>();
            /* for (int i = 0; i < jobList.Count;) //Sorting
             {

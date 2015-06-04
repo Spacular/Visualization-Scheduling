@@ -8,7 +8,7 @@ namespace VisualizationScheduling
 {
     class Priority_Preemptive
     {
-        public static List<Result> Run(List<Process> jobList, List<Result> resultList)
+        public static List<Result> Run(List<Process> jobList)
         {
             int currentProcess = 0;
             int cpuTime = 0;
@@ -16,6 +16,7 @@ namespace VisualizationScheduling
             int runTime = 0;
             int min,current=-1;
 
+            List<Result> resultList = new List<Result>();
             List<Result> readyQueue = new List<Result>();
             /*for (int i = 0; i < jobList.Count; ) //Sorting
             {

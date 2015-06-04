@@ -25,7 +25,7 @@ namespace VisualizationScheduling
 
     public class RR
     {
-        public static List<Result_double> Run(List<Process> jobList, List<Result_double> resultList, int a)
+        public static List<Result_double> Run(List<Process> jobList, int a)
         {
             int timequntam = a;
             int exetime = 0;
@@ -34,7 +34,7 @@ namespace VisualizationScheduling
             {
                 runTime = jobList.ElementAt(0).ArriveTime;
             }
-
+            List<Result_double> resultList = new List<Result_double>();
             List<rr_quere> readyQueue = new List<rr_quere>();
             do
             {

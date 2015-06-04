@@ -26,10 +26,11 @@ namespace VisualizationScheduling
     }
     class SRT //Shortest Joob First
     {
-        public static List<Result> Run(List<Process> jobList, List<Result> resultList)
+        public static List<Result> Run(List<Process> jobList)
         {
             int runTime = 0;
 
+            List<Result> resultList = new List<Result>();
             List<SRT_ReadyQueueElement> readyQueue = new List<SRT_ReadyQueueElement>();
 
             do

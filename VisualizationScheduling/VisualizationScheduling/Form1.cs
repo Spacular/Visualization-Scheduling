@@ -40,7 +40,7 @@ namespace VisualizationScheduling
                 Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
                 oList.Add(p);
             }
-            rr = RR.Run(oList, rr, time); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
+            rr = RR.Run(oList, time); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
             bool[] flag = new bool[oList.Count];
             strvalue = new string[rr.Count];
             value = new double[rr.Count];

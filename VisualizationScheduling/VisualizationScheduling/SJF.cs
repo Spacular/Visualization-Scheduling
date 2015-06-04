@@ -25,7 +25,7 @@ namespace VisualizationScheduling
 
     public class SJF
     {
-        public static List<Result> Run(List<Process> JobList, List<Result> ResultList)
+        public static List<Result> Run(List<Process> JobList)
         {
             // JobList는 oList로 넘겨받은 인자, ResultList는 반환해 줄 Result 배열
 
@@ -36,6 +36,7 @@ namespace VisualizationScheduling
             int first = 0;
             int min = 0;
 
+            List<Result> resultList = new List<Result>();
             List<ReadyQueueElement3> ReadyQueue = new List<ReadyQueueElement3>();               // 받은 프로세스별 내용을 분류할 리스트 배열.
             List<ReadyQueueElement3> SelectQueue = new List<ReadyQueueElement3>();
 
@@ -103,7 +104,7 @@ namespace VisualizationScheduling
                         if (ReadyQueue.ElementAt(first).BurstTime != 0)
                         {
                             ReadyQueueElement3 rq = ReadyQueue.ElementAt(first);    // 레디큐의 제일 첫 작업을 rq에 넣어준다.
-                            ResultList.Add(new Result(rq.PID, runTime, rq.BurstTime, rq.WaitingTime, 0));   // 처리한 결과를 ResultList에 넣어준다.
+                            resultList.Add(new Result(rq.PID, runTime, rq.BurstTime, rq.WaitingTime, 0));   // 처리한 결과를 ResultList에 넣어준다.
                             cpuDone = rq.BurstTime;             // 이 작업의 소요작업시간을 cpuDone에다가 집어넣는다
                             cpuTime = 0;                        // 이 작업이 cpu가 얼마만큼 실행했는지 나타낸다.
                             currentProcess = rq.PID;            // 현재 몇 번 프로세스가 실행되고 있는지 나타낸다.
@@ -137,7 +138,7 @@ namespace VisualizationScheduling
             while (JobList.Count != 0 || ReadyQueue.Count != 0 || currentProcess != 0);
             // JobList의 갯수가 0이 아니거나, ReadyQueue에 아직 작업이 남아있거나 혹은 현재 실행중인 Process의 수가 0이 아닌동안 계속 반복!
 
-            return ResultList;
+            return resultList;
         }
     }
 }
