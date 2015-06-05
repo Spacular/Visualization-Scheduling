@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ProcessID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArriveTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,8 +58,6 @@
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.runToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -78,15 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.processBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
@@ -96,7 +84,7 @@
             this.ArriveTime,
             this.BurstTime,
             this.Priority});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 63);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(410, 213);
             this.dataGridView1.TabIndex = 4;
@@ -304,24 +292,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(195, 27);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(228, 20);
-            this.textBox1.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(83, 32);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "TimeQuantum입력 : ";
-            // 
             // panel1
             // 
             this.panel1.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
@@ -334,12 +304,12 @@
             this.panel1.Location = new System.Drawing.Point(14, 497);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 171);
+            this.panel1.Size = new System.Drawing.Size(410, 128);
             this.panel1.TabIndex = 11;
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(201, 65);
+            this.button6.Location = new System.Drawing.Point(209, 66);
             this.button6.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(189, 53);
@@ -350,7 +320,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(9, 65);
+            this.button5.Location = new System.Drawing.Point(12, 66);
             this.button5.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(188, 53);
@@ -361,7 +331,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(298, 7);
+            this.button3.Location = new System.Drawing.Point(306, 8);
             this.button3.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(92, 53);
@@ -372,7 +342,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(9, 7);
+            this.button2.Location = new System.Drawing.Point(13, 8);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(92, 53);
@@ -383,7 +353,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(104, 7);
+            this.button1.Location = new System.Drawing.Point(109, 8);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 53);
@@ -395,7 +365,7 @@
             // 추가
             // 
             this.추가.AccessibleRole = System.Windows.Forms.AccessibleRole.ScrollBar;
-            this.추가.Location = new System.Drawing.Point(201, 7);
+            this.추가.Location = new System.Drawing.Point(210, 8);
             this.추가.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.추가.Name = "추가";
             this.추가.Size = new System.Drawing.Size(92, 53);
@@ -417,18 +387,18 @@
             "RR",
             "Priority(선점)",
             "Priority(비선점)"});
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 401);
+            this.checkedListBox1.Location = new System.Drawing.Point(12, 392);
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.checkedListBox1.MultiColumn = true;
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.ScrollAlwaysVisible = true;
-            this.checkedListBox1.Size = new System.Drawing.Size(411, 98);
+            this.checkedListBox1.Size = new System.Drawing.Size(411, 89);
             this.checkedListBox1.TabIndex = 12;
             this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(14, 282);
+            this.textBox2.Location = new System.Drawing.Point(14, 260);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -448,15 +418,12 @@
             this.AutoScroll = true;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(434, 680);
+            this.ClientSize = new System.Drawing.Size(434, 627);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Visualization_Scheduling";
@@ -476,7 +443,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -506,8 +472,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button 추가;
         private System.Windows.Forms.BindingSource processBindingSource;

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace VisualizationScheduling
 {
@@ -22,10 +23,8 @@ namespace VisualizationScheduling
         public int a;
         public Boolean[] Schedul = new Boolean[6];
         public bool none = true;
-        
-        
         public Visualization_Scheduling()
-        {
+        {   
             InitializeComponent();
 
         }
@@ -147,13 +146,17 @@ namespace VisualizationScheduling
                 }
             if (Schedul[0] == true || Schedul[1] == true || Schedul[2] == true || Schedul[4] == true || Schedul[3] == true || Schedul[5] == true)
             {
-                if (textBox1.Text == "" && Schedul[3] == true)
+                if (Schedul[3] == true)
                 {
-                    MessageBox.Show("RR_Sechduling을 선택 하였으나, Timequntam을 지정하지 않아 자동으로 '5'의값으로 지정됩니다.");
-                }
-                else if (textBox1.Text != "" && Schedul[3] == true)
-                {
-                    TimeQuntam = Convert.ToInt32(textBox1.Text.ToString());
+                    string value = "5";
+                    if (InputBox("TimeQuantam", "입력", ref value) == DialogResult.OK)
+                    {
+                        TimeQuntam = Convert.ToInt32(value.ToString());
+                    }
+                    else
+                    {
+                        TimeQuntam = 5;
+                    }
                 }
                 Sub_From frm = new Sub_From(this);
                 frm.Show();
@@ -354,7 +357,6 @@ namespace VisualizationScheduling
         {
             this.pList.Clear();
             this.dataGridView1.Rows.Clear();
-            this.textBox1.Clear();
             this.button1_Click(sender, e);
         }
         private void button4_Click(object sender, EventArgs e)//processID 정렬
@@ -387,6 +389,47 @@ namespace VisualizationScheduling
                 e.Cancel = true;
             }
 
+        }
+        public static DialogResult InputBox(string title, string promptText, ref string value)
+        {
+            Form form = new Form();
+            Label label = new Label();
+            TextBox textBox = new TextBox();
+            Button buttonOk = new Button();
+            Button buttonCancel = new Button();
+
+            form.Text = title;
+            label.Text = promptText;
+            textBox.Text = value;
+
+            buttonOk.Text = "OK";
+            buttonCancel.Text = "Cancel";
+            buttonOk.DialogResult = DialogResult.OK;
+            buttonCancel.DialogResult = DialogResult.Cancel;
+
+            label.SetBounds(9, 20, 372, 13);
+            textBox.SetBounds(12, 36, 372, 20);
+            buttonOk.SetBounds(228, 72, 75, 23);
+            buttonCancel.SetBounds(309, 72, 75, 23);
+
+            label.AutoSize = true;
+            textBox.Anchor = textBox.Anchor | AnchorStyles.Right;
+            buttonOk.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            buttonCancel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+
+            form.ClientSize = new Size(396, 107);
+            form.Controls.AddRange(new Control[] { label, textBox, buttonOk, buttonCancel });
+            form.ClientSize = new Size(Math.Max(300, label.Right + 10), form.ClientSize.Height);
+            form.FormBorderStyle = FormBorderStyle.FixedDialog;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.MinimizeBox = false;
+            form.MaximizeBox = false;
+            form.AcceptButton = buttonOk;
+            form.CancelButton = buttonCancel;
+
+            DialogResult dialogResult = form.ShowDialog();
+            value = textBox.Text;
+            return dialogResult;
         }
     }
 }

@@ -54,9 +54,9 @@ namespace VisualizationScheduling
 
             for (int i = 0; i < main.pList.Count; i++)
             {
-                int R = random.Next(10, 256);
-                int G = random.Next(10, 256);
-                int B = random.Next(10, 256);
+                int R = random.Next(10, 255);
+                int G = random.Next(10, 255);
+                int B = random.Next(10, 255);
                 this.process_color[i] = new SolidBrush(Color.FromArgb(R,G,B));
             }
             if (main.Schedul[0] == true)//fCFS
@@ -209,8 +209,6 @@ namespace VisualizationScheduling
                 label5.Text = "CPU활용시간: " + (Math.Round(cpu_sjf, 4) * 100) + "%";
                 prex = sjf[sjf.Count - 1].startP + sjf[sjf.Count - 1].burstTime;
                 SJF_panel.AutoScrollMinSize = new Size((prex * 11), SJF_panel.Size.Height + 1);
-
-
             }
             if (main.Schedul[3] == true)//RR
             {
@@ -265,12 +263,12 @@ namespace VisualizationScheduling
                 rr_chart2.Series[0]["DounutRadius"] = "40";
                 rr_label.Text = "전체 실행시간: " + busrtime.ToString();
                 rr_label2.Text = "평균 대기시간: " + (watingTime[3] / main.pList.Count).ToString();
-                rr_label3.Text = "TimeQuantam: " + time.ToString();
+                rr_label3.Text = "TimeQauntum: " + time.ToString();
                 label8.Text = "CPU활용시간: " + (Math.Round(cpu_rr, 4) * 100) + "%";
                 prex = rr[rr.Count - 1].startP + rr[rr.Count - 1].burstTime;
                 rr_panel.AutoScrollMinSize = new Size((prex * 11), rr_panel.Size.Height + 1);
                 chart2.Series[0].Points.Add(watingTime[3] / main.pList.Count);
-                chart2.Series[0].Points.ElementAt(chart2.Series[0].Points.Count - 1).Label = ("TimeQunatam : " + time.ToString());
+                chart2.Series[0].Points.ElementAt(chart2.Series[0].Points.Count - 1).Label = ("TimeQauntum : " + time.ToString());
             }
             if (main.Schedul[4] == true)//Priorty 선점
             {
@@ -390,6 +388,7 @@ namespace VisualizationScheduling
                 e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10)-x, resultListPosition);
                 e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
                 e.Graphics.FillRectangle(process_color[i-1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(Brushes.White, startPosition + (r.startP * 10) - x, resultListPosition + 20, 2, 30);
                 e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10)-x, resultListPosition + 60);
                 e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10)-x, resultListPosition + 80);
                 waitingTime += (double)r.waitingTime;
@@ -413,6 +412,7 @@ namespace VisualizationScheduling
                 e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
                 e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
                 e.Graphics.FillRectangle(process_color[i - 1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(Brushes.White, startPosition + (r.startP * 10) - x, resultListPosition + 20, 2, 30);
                 e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
                 e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 80);
                 waitingTime += (double)r.waitingTime;
@@ -441,6 +441,7 @@ namespace VisualizationScheduling
                     e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
                     e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
                     e.Graphics.FillRectangle(process_color[i-1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                    e.Graphics.FillRectangle(Brushes.White, startPosition + (r.startP*10) - x, resultListPosition + 20, 2, 30);
                     e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
                     waitingTime += (double)r.waitingTime;
                 }
@@ -463,6 +464,7 @@ namespace VisualizationScheduling
                 e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
                 e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
                 e.Graphics.FillRectangle(process_color[i - 1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(Brushes.White, startPosition + (r.startP * 10) - x, resultListPosition + 20, 2, 30);
                 e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
                 e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 80);
                 waitingTime += (double)r.waitingTime;
@@ -542,12 +544,12 @@ namespace VisualizationScheduling
             rr_chart2.Series[0]["DounutRadius"] = "40";
             rr_label.Text = "전체 실행시간: " + busrtime.ToString();
             rr_label2.Text = "평균 대기시간: " + (watingTime[3] / main.pList.Count).ToString();
-            rr_label3.Text = "TimeQuantam: " + time.ToString();
+            rr_label3.Text = "TimeQauntum: " + time.ToString();
             label8.Text = "CPU활용시간: " + (Math.Round(cpu_rr, 4) * 100) + "%";
             prex = rr[rr.Count - 1].startP + rr[rr.Count - 1].burstTime;
             rr_panel.AutoScrollMinSize = new Size((prex * 11), rr_panel.Size.Height + 1);
             chart2.Series[0].Points.Add(watingTime[3] / main.pList.Count);
-            chart2.Series[0].Points.ElementAt(chart2.Series[0].Points.Count - 1).Label = ("TimeQunatam : " + time.ToString());
+            chart2.Series[0].Points.ElementAt(chart2.Series[0].Points.Count - 1).Label = ("TimeQauntum : " + time.ToString());
 
         }
 
@@ -568,6 +570,7 @@ namespace VisualizationScheduling
                 e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
                 e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
                 e.Graphics.FillRectangle(process_color[i - 1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(Brushes.White, startPosition + (r.startP * 10) - x, resultListPosition + 20, 2, 30);
                 e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
                 e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 80);
                 waitingTime += (double)r.waitingTime;
@@ -590,6 +593,7 @@ namespace VisualizationScheduling
                 e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
                 e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
                 e.Graphics.FillRectangle(process_color[i - 1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(Brushes.White, startPosition + (r.startP * 10) - x, resultListPosition + 20, 2, 30);
                 e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
                 e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 80);
                 waitingTime += (double)r.waitingTime;

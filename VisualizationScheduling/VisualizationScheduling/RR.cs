@@ -25,9 +25,9 @@ namespace VisualizationScheduling
 
     public class RR
     {
-        public static List<Result_double> Run(List<Process> jobList, int Quantum)
+        public static List<Result_double> Run(List<Process> jobList, int a)
         {
-            int timequntam = Quantum;
+            int timequntam = a;
             int exetime = 0;
             int runTime = 0;
             if (jobList.ElementAt(0).ArriveTime > runTime)

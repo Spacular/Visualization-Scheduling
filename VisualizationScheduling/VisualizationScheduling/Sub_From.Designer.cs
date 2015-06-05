@@ -104,6 +104,10 @@
             this.Priorty_Chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Priorty_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.ID_Priorty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Priorty_label2 = new System.Windows.Forms.Label();
             this.Priorty_label = new System.Windows.Forms.Label();
             this.Priorty_panel = new System.Windows.Forms.Panel();
@@ -143,10 +147,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ID_Priorty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FCFC_Chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FCFS_Chart2)).BeginInit();
@@ -550,6 +550,28 @@
             this.dataGridView4.Size = new System.Drawing.Size(471, 248);
             this.dataGridView4.TabIndex = 28;
             // 
+            // ID_Priorty
+            // 
+            this.ID_Priorty.HeaderText = "Priorty(선점)";
+            this.ID_Priorty.MinimumWidth = 20;
+            this.ID_Priorty.Name = "ID_Priorty";
+            this.ID_Priorty.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "BurstTime";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "WaitingTime";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "Priorty";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
             // Priorty_label2
             // 
             this.Priorty_label2.AutoSize = true;
@@ -846,7 +868,7 @@
             this.rr_label3.Name = "rr_label3";
             this.rr_label3.Size = new System.Drawing.Size(153, 20);
             this.rr_label3.TabIndex = 43;
-            this.rr_label3.Text = "TimeQuantam :";
+            this.rr_label3.Text = "TimeQauntum :";
             // 
             // chart1
             // 
@@ -900,7 +922,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(131, 17);
             this.label1.TabIndex = 50;
-            this.label1.Text = "TimeQuantam :";
+            this.label1.Text = "TimeQauntum :";
             // 
             // button2
             // 
@@ -1013,28 +1035,6 @@
             this.label8.Size = new System.Drawing.Size(137, 20);
             this.label8.TabIndex = 59;
             this.label8.Text = "CPU활용도 : \r\n";
-            // 
-            // ID_Priorty
-            // 
-            this.ID_Priorty.HeaderText = "Priorty(선점)";
-            this.ID_Priorty.MinimumWidth = 20;
-            this.ID_Priorty.Name = "ID_Priorty";
-            this.ID_Priorty.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.HeaderText = "BurstTime";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.HeaderText = "WaitingTime";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.HeaderText = "Priorty";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
             // 
             // Sub_From
             // 
