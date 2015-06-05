@@ -57,7 +57,7 @@ namespace VisualizationScheduling
                     {
 
                         readyQueue[currentProcess].burstTime -= cpuTime; //현재 Burst저장
-                        resultList.Add(new Result(readyQueue.ElementAt(currentProcess).processID, runTime,
+                        resultList.Add(new Result(readyQueue.ElementAt(currentProcess).processID, runTime - cpuTime,
                             cpuTime, readyQueue.ElementAt(currentProcess).waitingTime, readyQueue.ElementAt(currentProcess).Priority));
 
                         currentProcess = min;  //우선순위로 기존 프로세스를 미러냄
@@ -68,7 +68,7 @@ namespace VisualizationScheduling
                     {
                         if (cpuTime == cpuDone)//선점한 상태에서 Burst Time이 끝난 경우
                         {
-                            resultList.Add(new Result(readyQueue.ElementAt(currentProcess).processID, runTime,
+                            resultList.Add(new Result(readyQueue.ElementAt(currentProcess).processID, runTime - readyQueue.ElementAt(currentProcess).burstTime,
                             readyQueue.ElementAt(currentProcess).burstTime, readyQueue.ElementAt(currentProcess).waitingTime, readyQueue.ElementAt(currentProcess).Priority));
                             readyQueue.RemoveAt(currentProcess); //Remove
                             currentProcess = -1;
@@ -76,7 +76,7 @@ namespace VisualizationScheduling
                         }
                     }
                 }
-                
+
                 cpuTime++;
                 runTime++;
                 for (int i = 0; i < readyQueue.Count; i++)

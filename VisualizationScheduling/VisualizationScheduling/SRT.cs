@@ -83,14 +83,15 @@ namespace VisualizationScheduling
                         readyQueue.RemoveAt(0);
                     else
                     {
-                        SRT_ReadyQueueElement rq = readyQueue.ElementAt(0);
-                        readyQueue.RemoveAt(0);
-                        readyQueue.Add(new SRT_ReadyQueueElement(rq.processID, runTime, rq.burstTime - 1, rq.waitingTime, rq.Priority));
+                        readyQueue.ElementAt(0).burstTime--;
+                        //SRT_ReadyQueueElement rq = readyQueue.ElementAt(0);
+                        //readyQueue.RemoveAt(0);
+                        //readyQueue.Add(new SRT_ReadyQueueElement(rq.processID, runTime, rq.burstTime - 1, rq.waitingTime, rq.Priority));
 
-                        readyQueue.Sort(delegate(SRT_ReadyQueueElement rqe1, SRT_ReadyQueueElement rqe2)
-                        {
-                            return rqe1.burstTime.CompareTo(rqe2.burstTime);
-                        });
+                        //readyQueue.Sort(delegate(SRT_ReadyQueueElement rqe1, SRT_ReadyQueueElement rqe2)
+                        //{
+                        //    return rqe1.burstTime.CompareTo(rqe2.burstTime);
+                        //});
                     }
                 }
                 

@@ -158,7 +158,7 @@ namespace VisualizationScheduling
                 Sub_From frm = new Sub_From(this);
                 frm.Show();
             }
-            if (none)
+            if (Schedul[0] == false && Schedul[1] == false && Schedul[2] == false && Schedul[4] == false && Schedul[3] == false && Schedul[5] == false)
             {
                 MessageBox.Show("체크된 것이 없습니다. 체크해 주세요.");
                 return;

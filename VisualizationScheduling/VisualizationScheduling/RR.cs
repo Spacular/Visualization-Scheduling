@@ -25,9 +25,9 @@ namespace VisualizationScheduling
 
     public class RR
     {
-        public static List<Result_double> Run(List<Process> jobList, int a)
+        public static List<Result_double> Run(List<Process> jobList, int Quantum)
         {
-            int timequntam = a;
+            int timequntam = Quantum;
             int exetime = 0;
             int runTime = 0;
             if (jobList.ElementAt(0).ArriveTime > runTime)
@@ -83,7 +83,7 @@ namespace VisualizationScheduling
                 for (int i = 0; i < readyQueue.Count - 1; i++)
                 {
                     readyQueue.ElementAt(i).waitingTime += exetime;
-                    readyQueue.ElementAt(i).waitingTime += 0.1;
+                    readyQueue.ElementAt(i).waitingTime += 0.2;
                 }
 
             } while (jobList.Count != 0 || readyQueue.Count != 0);

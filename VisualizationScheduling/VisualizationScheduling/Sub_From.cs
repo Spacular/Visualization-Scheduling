@@ -69,9 +69,10 @@ namespace VisualizationScheduling
                 fcfs = FCFS.Run(oList);
                 string[] row = new string[4];
                 j = 0;
+                double cpu;
                 dataGridView1.Rows.Clear();
                 FCFC_Chart.Series.Clear();
-                int burstime = 0;
+                double burstime = 0;
                 foreach (Result r in fcfs)
                 {
                     row[0] = r.processID.ToString();
@@ -93,10 +94,12 @@ namespace VisualizationScheduling
                         FCFS_Chart2.Series[0].Points.ElementAt(FCFS_Chart2.Series[0].Points.Count - 1).LegendText = ("process" + r.processID.ToString());
                     }
                 }
+                cpu = burstime / (double)(fcfs.ElementAt(0).startP + fcfs.ElementAt(main.pList.Count - 1).startP + fcfs.ElementAt(main.pList.Count - 1).burstTime);
                 FCFS_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
                 FCFS_Chart2.Series[0]["DounutRadius"] = "40";
                 FCFS_label.Text = "전체 실행시간: " + burstime.ToString();
                 FCFS_label2.Text = "평균 대기시간: " + (watingTime[0] / fcfs.Count).ToString();
+                label3.Text = "CPU활용시간: " + (Math.Round(cpu,4)*100) + "%";
                 prex = fcfs[fcfs.Count - 1].startP + fcfs[fcfs.Count - 1].burstTime;
                 FCFS_panel.AutoScrollMinSize = new Size((prex * 11), FCFS_panel.Size.Height + 1);
 
@@ -122,12 +125,15 @@ namespace VisualizationScheduling
                 }
 
                 j = 0;
+                double cpu_srt;
+                double burstime = 0;
                 foreach (Result e in srt)
                 {
                     srow[0] = e.processID.ToString();
                     srow[1] = e.burstTime.ToString();
                     srow[2] = e.waitingTime.ToString();
                     srow[3] = e.Priority.ToString();
+                    burstime += e.burstTime;
                     dataGridView2.Rows.Add(srow);
                 }
                 SRT_Chart.Series.Clear();
@@ -146,6 +152,7 @@ namespace VisualizationScheduling
                     SRT_Chart2.Series[0].Points.Add(wT[i]);
                     SRT_Chart2.Series[0].Points.ElementAt(SRT_Chart2.Series[0].Points.Count - 1).LegendText = ("process" + (i + 1)).ToString();
                 }
+                cpu_srt = burstime / (double)(srt.ElementAt(0).startP + srt.ElementAt(srt.Count - 1).startP + srt.ElementAt(srt.Count - 1).burstTime);
                 SRT_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
                 SRT_Chart2.Series[0]["DounutRadius"] = "40";
                 j = 0;
@@ -155,6 +162,7 @@ namespace VisualizationScheduling
                 }
                 SRT_label.Text = "전체 실행시간: " + (j).ToString();
                 SRT_label2.Text = "평균 대기시간: " + (watingTime[1] / main.pList.Count).ToString();
+                label4.Text = "CPU활용시간: " + (Math.Round(cpu_srt, 4) * 100) + "%";
                 prex = srt[srt.Count - 1].startP + srt[srt.Count - 1].burstTime;
                 SRT_panel.AutoScrollMinSize = new Size((prex * 11), SRT_panel.Size.Height + 1);
 
@@ -171,6 +179,7 @@ namespace VisualizationScheduling
                 string[] srow = { "", "", "", "" };
                 int burstime = 0;
                 SJF_Chart.Series.Clear();
+                double cpu_sjf = 0;
                 foreach (Result sjff in sjf)
                 {
                     srow[0] = sjff.processID.ToString();
@@ -192,10 +201,12 @@ namespace VisualizationScheduling
                     }
 
                 }
+                cpu_sjf = burstime / (double)(sjf.ElementAt(0).startP + sjf.ElementAt(sjf.Count - 1).startP + sjf.ElementAt(sjf.Count - 1).burstTime);
                 SJF_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
                 SJF_Chart2.Series[0]["DounutRadius"] = "40";
                 SJF_label.Text = "전체 실행시간: " + burstime.ToString();
                 SJF_label2.Text = "평균 대기시간: " + (watingTime[2] / sjf.Count).ToString();
+                label5.Text = "CPU활용시간: " + (Math.Round(cpu_sjf, 4) * 100) + "%";
                 prex = sjf[sjf.Count - 1].startP + sjf[sjf.Count - 1].burstTime;
                 SJF_panel.AutoScrollMinSize = new Size((prex * 11), SJF_panel.Size.Height + 1);
 
@@ -223,6 +234,7 @@ namespace VisualizationScheduling
                 }
                 j = 0;
                 dataGridView6.Rows.Clear();
+                double cpu_rr = 0;
                 foreach (Result_double r in rr)
                 {
                     row[0] = r.processID.ToString();
@@ -248,11 +260,13 @@ namespace VisualizationScheduling
                     rr_chart2.Series[0].Points.Add(Math.Round(wT[i], 1));
                     rr_chart2.Series[0].Points.ElementAt(rr_chart2.Series[0].Points.Count - 1).LegendText = ("process" + (i + 1)).ToString();
                 }
+                cpu_rr = busrtime / (double)(rr.ElementAt(0).startP + rr.ElementAt(rr.Count - 1).startP + rr.ElementAt(rr.Count - 1).burstTime);
                 rr_chart2.Series[0]["PieDrawingStyle"] = "Concave";
                 rr_chart2.Series[0]["DounutRadius"] = "40";
                 rr_label.Text = "전체 실행시간: " + busrtime.ToString();
                 rr_label2.Text = "평균 대기시간: " + (watingTime[3] / main.pList.Count).ToString();
                 rr_label3.Text = "TimeQuantam: " + time.ToString();
+                label8.Text = "CPU활용시간: " + (Math.Round(cpu_rr, 4) * 100) + "%";
                 prex = rr[rr.Count - 1].startP + rr[rr.Count - 1].burstTime;
                 rr_panel.AutoScrollMinSize = new Size((prex * 11), rr_panel.Size.Height + 1);
                 chart2.Series[0].Points.Add(watingTime[3] / main.pList.Count);
@@ -261,14 +275,25 @@ namespace VisualizationScheduling
             if (main.Schedul[4] == true)//Priorty 선점
             {
                 oList = new List<Process>();
+                double[] wT = new double[main.pList.Count];
                 for (int i = 0; i < main.pList.Count; i++)
                 {
                     Process p = new Process(main.pList.ElementAt(i).ProcessID, main.pList.ElementAt(i).ArriveTime, main.pList.ElementAt(i).BurstTime, main.pList.ElementAt(i).Priority);
                     oList.Add(p);
                 }
                 priority_preemptive = Priority_Preemptive.Run(oList);
+
+
+                for (int i = 0; i < priority_preemptive.Count; i++)
+                {
+                    if (wT[priority_preemptive.ElementAt(i).processID - 1] < priority_preemptive.ElementAt(i).waitingTime)
+                    {
+                        wT[priority_preemptive.ElementAt(i).processID - 1] = priority_preemptive.ElementAt(i).waitingTime;
+                    }
+                }
                 dataGridView4.Rows.Clear();
-                int busrtime = 0;
+                double busrtime = 0;
+                double cpu_preem;
                 string[] row = { "", "", "", "" };
                 foreach (Result r in priority_preemptive)
                 {
@@ -279,7 +304,30 @@ namespace VisualizationScheduling
                     busrtime += r.burstTime;
                     dataGridView4.Rows.Add(row);
                 }
-
+                Priorty_Chart.Series.Clear();
+                for (int i = 0; i < main.pList.Count; i++)
+                {
+                    watingTime[4] += wT[i];
+                    if (wT[i] == 0)
+                    {
+                        continue;
+                    }
+                    System.Windows.Forms.DataVisualization.Charting.Series se = new System.Windows.Forms.DataVisualization.Charting.Series();
+                    se.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                    se.Name = ("process" + (i + 1).ToString());
+                    se.Points.Add(Math.Round(wT[i], 1));
+                    Priorty_Chart.Series.Add(se);
+                    Priorty_Chart2.Series[0].Points.Add(Math.Round(wT[i], 1));
+                    Priorty_Chart2.Series[0].Points.ElementAt(Priorty_Chart2.Series[0].Points.Count - 1).LegendText = ("process" + (i + 1)).ToString();
+                }
+                cpu_preem = busrtime / (double)(priority_preemptive.ElementAt(0).startP + priority_preemptive.ElementAt(priority_preemptive.Count - 1).startP + priority_preemptive.ElementAt(priority_preemptive.Count - 1).burstTime);
+                Priorty_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
+                Priorty_Chart2.Series[0]["DounutRadius"] = "40";
+                Priorty_label.Text = "전체 실행시간: " + busrtime.ToString();
+                Priorty_label2.Text = "평균 대기시간: " + (watingTime[4] / main.pList.Count).ToString();
+                label6.Text = "CPU활용시간: " + (Math.Round(cpu_preem, 4) * 100) + "%";
+                prex = priority_preemptive[priority_preemptive.Count - 1].startP + priority_preemptive[priority_preemptive.Count - 1].burstTime;
+                Priorty_panel.AutoScrollMinSize = new Size((prex * 11), Priorty_panel.Size.Height + 1);
             }
             if (main.Schedul[5] == true)//Priorty 비선점
             {
@@ -291,8 +339,10 @@ namespace VisualizationScheduling
                 }
                 priorty = Priority.Run(oList);
                 dataGridView5.Rows.Clear();
-                int busrtime = 0;
+                double busrtime = 0;
+                double cpu_pri;
                 string[] row = { "", "", "", "" };
+                Priorty2_Chart.Series.Clear();
                 foreach (Result r in priorty)
                 {
                     row[0] = r.processID.ToString();
@@ -300,8 +350,27 @@ namespace VisualizationScheduling
                     row[2] = r.waitingTime.ToString();
                     row[3] = r.Priority.ToString();
                     busrtime += r.burstTime;
+                    watingTime[5] += r.waitingTime;
                     dataGridView5.Rows.Add(row);
+                    if (r.waitingTime != 0)
+                    {
+                        System.Windows.Forms.DataVisualization.Charting.Series se = new System.Windows.Forms.DataVisualization.Charting.Series();
+                        se.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                        se.Name = ("process" + r.processID.ToString());
+                        se.Points.Add(r.waitingTime);
+                        Priorty2_Chart.Series.Add(se);
+                        Priorty2_Chart2.Series[0].Points.Add(r.waitingTime);
+                        Priorty2_Chart2.Series[0].Points.ElementAt(Priorty2_Chart2.Series[0].Points.Count - 1).LegendText = ("process" + r.processID.ToString());
+                    }
                 }
+                cpu_pri = busrtime / (double)(priorty.ElementAt(0).startP + priorty.ElementAt(priorty.Count - 1).startP + priorty.ElementAt(priorty.Count - 1).burstTime);
+                Priorty2_Chart2.Series[0]["PieDrawingStyle"] = "Concave";
+                Priorty2_Chart2.Series[0]["DounutRadius"] = "40";
+                Priorty2_label.Text = "전체 실행시간: " + busrtime.ToString();
+                Priorty2_label2.Text = "평균 대기시간: " + (watingTime[5] / priorty.Count).ToString();
+                label7.Text = "CPU활용시간: " + (Math.Round(cpu_pri, 4) * 100) + "%";
+                prex = priorty[priorty.Count - 1].startP + priorty[priorty.Count - 1].burstTime;
+                Priorty2_panel.AutoScrollMinSize = new Size((prex * 11), Priorty2_panel.Size.Height + 1);
             }
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -422,6 +491,7 @@ namespace VisualizationScheduling
             }
             double[] wT = new double[main.pList.Count];
             watingTime[3] = 0;
+            double cpu_rr = 0;
             int time = Convert.ToInt32(textBox1.Text.ToString());
             oList = new List<Process>();
             for (int i = 0; i < main.pList.Count; i++)
@@ -430,6 +500,8 @@ namespace VisualizationScheduling
                 oList.Add(p);
             }
             rr = RR.Run(oList, time); //fcfs클래스의 Run메소드 호출 //fcfs는 Result클래스로 이루어진 리스트
+            string[] row = new string[4];
+            double busrtime = 0;
             for (int i = 0; i < rr.Count; i++)
             {
                 if (wT[rr.ElementAt(i).processID - 1] < rr.ElementAt(i).waitingTime)
@@ -437,13 +509,91 @@ namespace VisualizationScheduling
                     wT[rr.ElementAt(i).processID - 1] = rr.ElementAt(i).waitingTime;
                 }
             }
+            j = 0;
+            dataGridView6.Rows.Clear();
+            foreach (Result_double r in rr)
+            {
+                row[0] = r.processID.ToString();
+                row[1] = r.burstTime.ToString();
+                row[2] = r.waitingTime.ToString();
+                row[3] = r.Priority.ToString();
+                busrtime += r.burstTime;
+                dataGridView6.Rows.Add(row);
+            }
+            rr_chart.Series.Clear();
+            rr_chart2.Series[0].Points.Clear();
             for (int i = 0; i < main.pList.Count; i++)
             {
                 watingTime[3] += wT[i];
+                if (wT[i] == 0)
+                {
+                    continue;
+                }
+                System.Windows.Forms.DataVisualization.Charting.Series se = new System.Windows.Forms.DataVisualization.Charting.Series();
+                se.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                se.Name = ("process" + (i + 1).ToString());
+                se.Points.Add(Math.Round(wT[i], 1));
+                rr_chart.Series.Add(se);
+                rr_chart2.Series[0].Points.Add(Math.Round(wT[i], 1));
+                rr_chart2.Series[0].Points.ElementAt(rr_chart2.Series[0].Points.Count - 1).LegendText = ("process" + (i + 1)).ToString();
             }
+            cpu_rr = busrtime / (double)(rr.ElementAt(0).startP + rr.ElementAt(rr.Count - 1).startP + rr.ElementAt(rr.Count - 1).burstTime);
+            rr_chart2.Series[0]["PieDrawingStyle"] = "Concave";
+            rr_chart2.Series[0]["DounutRadius"] = "40";
+            rr_label.Text = "전체 실행시간: " + busrtime.ToString();
+            rr_label2.Text = "평균 대기시간: " + (watingTime[3] / main.pList.Count).ToString();
+            rr_label3.Text = "TimeQuantam: " + time.ToString();
+            label8.Text = "CPU활용시간: " + (Math.Round(cpu_rr, 4) * 100) + "%";
+            prex = rr[rr.Count - 1].startP + rr[rr.Count - 1].burstTime;
+            rr_panel.AutoScrollMinSize = new Size((prex * 11), rr_panel.Size.Height + 1);
             chart2.Series[0].Points.Add(watingTime[3] / main.pList.Count);
             chart2.Series[0].Points.ElementAt(chart2.Series[0].Points.Count - 1).Label = ("TimeQunatam : " + time.ToString());
 
+        }
+
+        private void Priorty_panel_Paint(object sender, PaintEventArgs e)
+        {
+            if (main.Schedul[4] == false)
+            {
+                return;
+            }
+            int startPosition = 10;
+            double waitingTime = 0.0;
+            Invalidate();
+            int resultListPosition = 0;
+            int i = 0;
+            foreach (Result r in priority_preemptive)
+            {
+                i = r.processID;
+                e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
+                e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(process_color[i - 1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
+                e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 80);
+                waitingTime += (double)r.waitingTime;
+            }
+        }
+        private void Priorty2_panel_Paint(object sender, PaintEventArgs e)
+        {
+            if (main.Schedul[5] == false)
+            {
+                return;
+            }
+            int startPosition = 10;
+            double waitingTime = 0.0;
+            Invalidate();
+            int resultListPosition = 0;
+            int i = 0;
+            foreach (Result r in priorty)
+            {
+                i = r.processID;
+                e.Graphics.DrawString("p" + r.processID.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition);
+                e.Graphics.DrawRectangle(Pens.Black, startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.FillRectangle(process_color[i - 1], startPosition + (r.startP * 10) - x, resultListPosition + 20, r.burstTime * 10, 30);
+                e.Graphics.DrawString(r.burstTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 60);
+                e.Graphics.DrawString(r.waitingTime.ToString(), Font, Brushes.Black, startPosition + (r.startP * 10) - x, resultListPosition + 80);
+                waitingTime += (double)r.waitingTime;
+            }
         }
 
     }
